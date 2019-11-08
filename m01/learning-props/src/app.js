@@ -1,6 +1,7 @@
 'use strict'
 import React, { Component } from 'react'
 
+import Square from './square'
 import Title from './title'
 
 class App extends Component {
@@ -11,6 +12,14 @@ class App extends Component {
           name='Murilo'
         // lastName='Cunha'
         />
+
+        <Square
+        // color='blue' 
+        />
+
+        {['#FF00FF', '#FFFF00', '#FF00FF'].map((square, index) => (
+          <Square key={index} color={square} />
+        ))}
       </div>
     )
   }
