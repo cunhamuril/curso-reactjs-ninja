@@ -7,7 +7,9 @@ import Title from './title'
 class App extends Component {
   render() {
     return (
-      <div className='container'>
+      <div className='container' onClick={e => {
+        alert('clicou')
+      }}>
         <Title
           name='Murilo'
         // lastName='Cunha'
