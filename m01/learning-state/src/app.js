@@ -11,6 +11,7 @@ class App extends Component {
     super()
     this.state = {
       color: 'gray',
+      time: 0,
       showTimer: true
     }
   }
@@ -38,11 +39,17 @@ class App extends Component {
             {color}
           </Button>
         ))}
+
         {/* Esta linha debaixo é como se fosse um operador binário (if) */}
-        {this.state.showTimer && <Timer />}
+        {this.state.showTimer && <Timer time={this.state.time} />}
+
         <button onClick={() => {
           this.setState({ showTimer: !this.state.showTimer })
         }}>Show / hide timer</button>
+
+        <button onClick={() => {
+          this.setState({ time: this.state.time + 10 })
+        }}>Change props</button>
       </div>
     )
   }
