@@ -22,3 +22,16 @@ $ webpack // este comando vai gerar o arquivo bundle
 
 // após instalar webpack-dev-server de forma global
 $ webpack-dev-server // vai executar o servidor de desenvolvimento do webpack
+--------------------------------------------------
+
+"LIFECYCLE"
+// mounting / unmounting
+- componentWillMount() // fazer alguma coisa antes de o componente montar
+- componenteDidMount() // fazer alguma coisa depois de o componente montar
+- componentWillUnmount() // fazer alguma coisa antes de o componente desmontar
+
+// updating
+- componenteWillReceiveProps(nextProps) // quando o component vai receber novas props
+- shouldComponentUpdate(nextProps, nextState) => bool // o componente deve ou não ser atualizado
+- componentWillUpdate(nextProps, nextState) // antes de o componente ser atualizado
+- componentDidUpdate(prevProps, prevState) // depois de o componente ser atualizado
