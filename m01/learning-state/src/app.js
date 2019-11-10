@@ -48,7 +48,7 @@ class App extends Component {
         }}>Show / hide timer</button>
 
         <button onClick={() => {
-          this.setState({ time: this.state.time + 10 })
+          this.setState({ time: this.state.time + 1 })
         }}>Change props</button>
       </div>
     )
