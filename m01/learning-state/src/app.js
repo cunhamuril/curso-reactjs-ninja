@@ -17,15 +17,15 @@ class App extends Component {
   }
 
   componentWillMount() {
-    console.log('componentWillMount')
+    console.log('componentWillMount app')
   }
 
   componentDidMount() {
-    console.log('componentDidMount')
+    console.log('componentDidMount app')
   }
 
   render() {
-    console.log('render')
+    console.log('render app')
     const colors = ['red', 'green', 'blue', 'black', 'gold']
 
     return (
