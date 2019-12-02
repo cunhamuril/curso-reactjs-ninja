@@ -35,3 +35,15 @@ $ webpack-dev-server // vai executar o servidor de desenvolvimento do webpack
 - shouldComponentUpdate(nextProps, nextState) => bool // o componente deve ou não ser atualizado
 - componentWillUpdate(nextProps, nextState) // antes de o componente ser atualizado
 - componentDidUpdate(prevProps, prevState) // depois de o componente ser atualizado
+
+--------------------------------------------------
+
+"TDD -> Test-driven development"
+
+/**
+ * MOMENTOS 
+ */
+
+ RED // Escreva um teste para uma implementação INEXISTENTE e execute o teste. Ele vai QUEBRAR.
+ GREEN // FAÇA A IMPLEMENTAÇÃO no código e execute o teste. Ele deve PASSAR
+ BLUE // Refactor // Existe código duplicado? Refatore. Nesse passo, nenhum teste anteriror deve quebrar.
