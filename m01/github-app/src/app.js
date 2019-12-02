@@ -89,11 +89,14 @@ class App extends Component {
   render() {
     return (
       <AppContent
-        userinfo={this.state.userinfo}
-        repos={this.state.repos}
-        starred={this.state.starred}
-        isFetching={this.state.isFetching}
-        isFetchingRepos={this.state.isFetchingRepos}
+        {...this.state} // esta linha substitui as proximas 5 linhas -> spread operator
+        // userinfo={this.state.userinfo}
+        // repos={this.state.repos}
+        // starred={this.state.starred}
+        // isFetching={this.state.isFetching}
+        // isFetchingRepos={this.state.isFetchingRepos}
+
+
         // handleSearch={e => this.handleSearch(e)} // ao invés de fazer assim
         handleSearch={this.handleSearch} // o recomendado pelo react é fazer o bind no constructor, assim
         getRepos={this.getRepos('repos')}
