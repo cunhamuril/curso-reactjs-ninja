@@ -25,6 +25,7 @@ $ webpack-dev-server // vai executar o servidor de desenvolvimento do webpack
 --------------------------------------------------
 
 "LIFECYCLE"
+
 // mounting / unmounting
 - componentWillMount() // fazer alguma coisa antes de o componente montar
 - componenteDidMount() // fazer alguma coisa depois de o componente montar
