@@ -48,3 +48,27 @@ $ webpack-dev-server // vai executar o servidor de desenvolvimento do webpack
  RED // Escreva um teste para uma implementação INEXISTENTE e execute o teste. Ele vai QUEBRAR.
  GREEN // FAÇA A IMPLEMENTAÇÃO no código e execute o teste. Ele deve PASSAR
  BLUE // Refactor // Existe código duplicado? Refatore. Nesse passo, nenhum teste anteriror deve quebrar.
+
+---------------------------------------------------------------------- MÓDULO 02 -----------------------------------------------------------------------
+
+"MAP"
+	var arr = [1, 2, 3]
+	arr.map((item, index, array) => ({item, index, array}))
+	// [ { item: 1, index: 0, array:[1, 2, 3] },
+	//   { item: 2, index: 1, array:[1, 2, 3] },
+	//   { item: 3, index: 2, array:[1, 2, 3] } ]
+
+"FILTER"
+	var arr = [1, 2, 3]
+	arr.filter((item, index, array) => item > 2)
+	// [ 3 ]
+
+
+---------------------------------------------------------------------- MÓDULO 03 -----------------------------------------------------------------------
+
+"Redux is a predictable state container for JavaScript apps."
+
+-- 3 principios
+1. "Single source of truth" // Uma única fonte de estados, centralizada
+2. "State is read-only" // Estado é apenas leitura
+3. "Changes are made with pure functions" // Mudanças feitas apenas com funções puras
