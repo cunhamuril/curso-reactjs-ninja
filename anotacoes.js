@@ -70,7 +70,14 @@ var arr = [1, 2, 3]
 
 	arr.every(item => item > 0)	// todos os itens > 0?
 	// true
-	
+
+"SOME" // basicamente o contrário de every
+	arr.some(item => item > 2)	// algum item > 2?
+	// true
+
+	arr.some(item => item > 3)	// algum item > 3?
+	// false
+
 /* ----------------------------------------------------------------------- */
 
 ---------------------------------------------------------------------- MÓDULO 03 -----------------------------------------------------------------------
