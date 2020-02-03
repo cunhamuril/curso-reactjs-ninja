@@ -49,11 +49,14 @@ $ webpack-dev-server // vai executar o servidor de desenvolvimento do webpack
  GREEN // FAÇA A IMPLEMENTAÇÃO no código e execute o teste. Ele deve PASSAR
  BLUE // Refactor // Existe código duplicado? Refatore. Nesse passo, nenhum teste anteriror deve quebrar.
 
+
+
+
+
 ---------------------------------------------------------------------- MÓDULO 02 -----------------------------------------------------------------------
 
-/* ----------------------------------------------------------------------- */
+/* ---------------------------------JS-------------------------------------- */
 var arr = [1, 2, 3]
-
 "MAP"	
 	arr.map((item, index, array) => ({item, index, array}))
 	// [ { item: 1, index: 0, array:[1, 2, 3] },
@@ -67,18 +70,34 @@ var arr = [1, 2, 3]
 "EVERY"
 	arr.every(item => item > 2)	// todos os itens > 2?
 	// false
-
 	arr.every(item => item > 0)	// todos os itens > 0?
 	// true
 
 "SOME" // basicamente o contrário de every
 	arr.some(item => item > 2)	// algum item > 2?
 	// true
-
 	arr.some(item => item > 3)	// algum item > 3?
 	// false
 
+"REVERSE"
+	arr.reverse()
+	// [3, 2, 1]
+
+"SLICE"
+	arr.slice(0, 2) // ignora todos outros indices do array
+	// [1, 2]
+	arr.slice(1) // pega do indice 1 em diante
+	// [2, 3]
+	arr.slice(0, -1) // só não pega o último índice
+	// [1, 2]
+	arr.slice(-1) // pega último item
+	// [3]
+
+
 /* ----------------------------------------------------------------------- */
+
+
+
 
 ---------------------------------------------------------------------- MÓDULO 03 -----------------------------------------------------------------------
 
