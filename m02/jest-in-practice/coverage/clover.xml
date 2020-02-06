@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1580749603929" clover="3.2.0">
-  <project timestamp="1580749603929" name="All files">
-    <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1" elements="5" coveredelements="5" complexity="0" loc="2" ncloc="2" packages="1" files="1" classes="1">
-      <file name="reverse-recursive.js" path="/home/murilo/development/cursos/curso-reactjs-ninja/m02/jest-in-practice/src/reverse/reverse-recursive.js">
-        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="8" type="cond" truecount="2" falsecount="0"/>
+<coverage generated="1580990276300" clover="3.2.0">
+  <project timestamp="1580990276300" name="All files">
+    <metrics statements="8" coveredstatements="8" conditionals="6" coveredconditionals="6" methods="4" coveredmethods="4" elements="18" coveredelements="18" complexity="0" loc="8" ncloc="8" packages="1" files="1" classes="1">
+      <file name="reduce-recursive.js" path="/home/murilo/development/cursos/curso-reactjs-ninja/m02/jest-in-practice/src/reduce/reduce-recursive.js">
+        <metrics statements="8" coveredstatements="8" conditionals="6" coveredconditionals="6" methods="4" coveredmethods="4"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="7" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="6" type="stmt"/>
+        <line num="10" count="20" type="stmt"/>
+        <line num="11" count="20" type="stmt"/>
+        <line num="13" count="20" type="cond" truecount="2" falsecount="0"/>
       </file>
     </metrics>
   </project>

@@ -45,9 +45,9 @@ $ webpack-dev-server // vai executar o servidor de desenvolvimento do webpack
  * MOMENTOS 
  */
 
- RED // Escreva um teste para uma implementação INEXISTENTE e execute o teste. Ele vai QUEBRAR.
- GREEN // FAÇA A IMPLEMENTAÇÃO no código e execute o teste. Ele deve PASSAR
- BLUE // Refactor // Existe código duplicado? Refatore. Nesse passo, nenhum teste anteriror deve quebrar.
+RED // Escreva um teste para uma implementação INEXISTENTE e execute o teste. Ele vai QUEBRAR.
+GREEN // FAÇA A IMPLEMENTAÇÃO no código e execute o teste. Ele deve PASSAR
+BLUE // Refactor // Existe código duplicado? Refatore. Nesse passo, nenhum teste anteriror deve quebrar.
 
 
 
@@ -56,7 +56,9 @@ $ webpack-dev-server // vai executar o servidor de desenvolvimento do webpack
 ---------------------------------------------------------------------- MÓDULO 02 -----------------------------------------------------------------------
 
 /* ---------------------------------JS-------------------------------------- */
+
 var arr = [1, 2, 3]
+
 "MAP"	
 	arr.map((item, index, array) => ({item, index, array}))
 	// [ { item: 1, index: 0, array:[1, 2, 3] },
@@ -92,6 +94,9 @@ var arr = [1, 2, 3]
 	// [1, 2]
 	arr.slice(-1) // pega último item
 	// [3]
+
+"REDUCE"
+	arr.reduce((acc, item) => acc + item) // 1 + 2 + 3 = 6
 
 
 /* ----------------------------------------------------------------------- */
