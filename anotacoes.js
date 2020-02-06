@@ -102,6 +102,11 @@ var arr = [1, 2, 3]
 	["lo", "ri", "Mu"].reduceRight((acc, item) => acc + item, '')
 	// Murilo
 
+"FIND"
+	arr.find(item => item === 1)
+	// 1
+	arr.find(item => item === 10)
+	// undefined
 
 /* ----------------------------------------------------------------------- */
 
