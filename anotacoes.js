@@ -98,6 +98,10 @@ var arr = [1, 2, 3]
 "REDUCE"
 	arr.reduce((acc, item) => acc + item) // 1 + 2 + 3 = 6
 
+"REDUCERIGHT"
+	["lo", "ri", "Mu"].reduceRight((acc, item) => acc + item, '')
+	// Murilo
+
 
 /* ----------------------------------------------------------------------- */
 

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for reduce.js</title>
+    <title>Code coverage report for main-reduce.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="index.html">All files</a> reduce.js
+      <a href="index.html">All files</a> main-reduce.js
     </h1>
     <div class='clearfix'>
     </div>
@@ -29,19 +29,55 @@
 4
 5
 6
-7</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
 &nbsp;
-import mainReduce from './main-reduce'
+const mainReduce = (arr, func, initialValue) =&gt; {
+  let acc = initialValue
+  let arrCopy = arr
 &nbsp;
-const reduce = mainReduce
+  if (initialValue === undefined) {
+    acc = arr[0]
+    arrCopy = arr.slice(1)
+  }
 &nbsp;
-export default reduce</pre></td></tr>
+  for (let i = 0; i &lt; arrCopy.length; i++) {
+    acc = func(acc, arrCopy[i], i, arrCopy)
+  }
+&nbsp;
+  return acc
+}
+&nbsp;
+export default mainReduce</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->

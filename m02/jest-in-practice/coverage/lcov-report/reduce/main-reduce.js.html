@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for reverse/reverse.js</title>
+    <title>Code coverage report for reduce/main-reduce.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -16,12 +16,12 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../index.html">All files</a> / <a href="index.html">reverse</a> reverse.js
+      <a href="../index.html">All files</a> / <a href="index.html">reduce</a> main-reduce.js
     </h1>
     <div class='clearfix'>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -35,10 +35,22 @@
 10
 11
 12
-13</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+13
+14
+15
+16
+17
+18
+19</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -49,17 +61,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
 &nbsp;
-const reverse = (arr) =&gt; {
-  let newArr = []
+const mainReduce = (arr, func, initialValue) =&gt; {
+  let acc = initialValue
+  let arrCopy = arr
 &nbsp;
-  for (let i = arr.length; i--;) {
-    newArr.push(arr[i])
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (initialValue === undefined) {
+<span class="cstat-no" title="statement not covered" >    acc = arr[0]</span>
+<span class="cstat-no" title="statement not covered" >    arrCopy = arr.slice(1)</span>
   }
 &nbsp;
-  return newArr
+  for (let i = 0; i &lt; arrCopy.length; i++) {
+    acc = func(acc, arrCopy[i], i, arrCopy)
+  }
+&nbsp;
+  return acc
 }
 &nbsp;
-export default reverse</pre></td></tr>
+export default mainReduce</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
