@@ -43,19 +43,61 @@ it('map([1, 2], (item, index, array) => array) should return [[1, 2], [1, 2]', (
   expect(map([1, 2], (item, index, array) => array)).to.be.deep.equal([[1, 2], [1, 2]])
 })
 
-//
-
-// it('map([1, 2]) should throw an error with message "func is not a function"', () => {
-//   expect(map).to.throw(TypeError, /func is not a function/)
-// })
-
-// it('map should throw an error with message "arr is not an array"', () => {
-//   expect(map).to.throw(TypeError, /arr is not an array/)
-// });
-
-//
-
 it('map() should return []', () => {
   expect(map()).to.be.deep.equal([])
 })
 
+it('map([1, 2]) should return [1, 2]', () => {
+  expect(map([1, 2])).to.be.deep.equal([1, 2])
+})
+
+/**
+ * Exceptions
+ */
+it('map(1) should throw a TypeError', () => {
+  let error
+
+  try {
+    map(1)
+  } catch (e) {
+    error = e
+  }
+
+  expect(error.name).to.be.equal('TypeError')
+})
+
+it('map(1) should throw a TypeError with message "The first parameter must be an array"', () => {
+  let error
+
+  try {
+    map(1)
+  } catch (e) {
+    error = e
+  }
+
+  expect(error.message).to.be.equal('The first parameter must be an array')
+})
+
+it('map([1, 2], "function") should throw a TypeError', () => {
+  let error
+
+  try {
+    map([1, 2], "function")
+  } catch (e) {
+    error = e
+  }
+
+  expect(error.name).to.be.equal('TypeError')
+})
+
+it('map([1, 2], "function") should throw a TypeError with message "The second parameter must be a function"', () => {
+  let error
+
+  try {
+    map([1, 2], "function")
+  } catch (e) {
+    error = e
+  }
+
+  expect(error.message).to.be.equal('The second parameter must be a function')
+})

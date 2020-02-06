@@ -1,20 +1,18 @@
 'use strict'
 
-const map = (arr = [], func = () => { }) => {
-  // se arr não é um array
+const map = (arr = [], func = (item) => item) => {
   if (!Array.isArray(arr)) {
-    throw new TypeError('arr is not an array')
+    throw new TypeError('The first parameter must be an array')
   }
 
-  // se func não for função ...
   if (typeof func !== 'function') {
-    throw new TypeError('func is not a function')
+    throw new TypeError('The second parameter must be a function')
   }
 
   let newArr = []
-  for (let i = 0; i < arr.length; i++) {
+
+  for (let i = 0; i < arr.length; i++)
     newArr.push(func(arr[i], i, arr))
-  }
 
   return newArr
 }
