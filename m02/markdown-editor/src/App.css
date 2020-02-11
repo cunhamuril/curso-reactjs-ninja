@@ -1,0 +1,69 @@
+@import '~normalize.css';
+@import '~highlight.js/styles/dracula.css';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+body > div {
+  height: 100%;
+  width: 100%;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+.editor {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea,
+.view {
+  min-width: 50%;  
+  max-width: 50%;
+}
+
+textarea {
+  border: solid 8px #fc0;
+  font-size: 18px;  
+  padding: 10px;
+  resize: none;  
+  width: 100%;
+}
+
+textarea:focus {
+  outline: 0 none;
+}
+
+button {
+  background: linear-gradient(#ff0, #fa0);
+  border: 3px solid #fd0;
+  color: #333;
+  font-size: 20px;
+  font-weight: 700;
+  height: 15%;
+  margin: 0;
+  text-transform: uppercase;
+  transition: all 0.15s ease-in-out;
+  width: 100%;
+}
+
+
+.view {
+  background: #282A36;
+  color: #fff;
+  font-family: sans-serif;
+  overflow: auto;
+  padding: 10px;
+}
