@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import marked from 'marked'
-import hljs from 'highlight.js'
 
 import MarkdownEditor from './components/markdown-editor'
 
 import './App.css';
 
-marked.setOptions({
-  // hightlight serve para colorir blocos de código
-  highlight: (code) => {
-    return hljs.highlightAuto(code).value
-  }
+import('highlight.js').then(hljs => {
+  marked.setOptions({
+    // hightlight serve para colorir blocos de código
+    highlight: (code, lang) => {
+      // Se a linguagem for passada, ele vai colorir conforme a linguagem
+      if (lang && hljs.getLanguage(lang)) {
+        return hljs.highlight(lang, code).value
+      }
+
+      return hljs.highlightAuto(code).value
+    }
+  })
 })
 
 class App extends Component {
