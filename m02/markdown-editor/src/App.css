@@ -10,6 +10,7 @@ body,
 body > div {
   height: 100%;
   width: 100%;
+  font-family: sans-serif;
 }
 
 html,
@@ -19,23 +20,42 @@ body {
 
 .editor {
   display: flex;
+  flex-wrap: wrap;
   height: 100%;
   width: 100%;
 }
 
-form {
+.editor-header {
+  background: #21232c;
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
+  height: 40px;
+  width: 100%;
+}
+
+.editor-header button{
+  border: 0;
+  background: #1e801e;
+  color: #fff;
+  text-transform: uppercase;  
+  padding: 0 20px;
+}
+
+.editor-header button:hover{
+  filter: brightness(0.9);
+  cursor: pointer;
 }
 
 textarea,
 .view {
+  height: 100%;
   min-width: 50%;  
   max-width: 50%;
 }
 
 textarea {
-  border: solid 8px #fc0;
+  border: solid 4px #fc0;
+  font-family: monospace;
   font-size: 18px;  
   padding: 10px;
   resize: none;  
@@ -45,20 +65,6 @@ textarea {
 textarea:focus {
   outline: 0 none;
 }
-
-button {
-  background: linear-gradient(#ff0, #fa0);
-  border: 3px solid #fd0;
-  color: #333;
-  font-size: 20px;
-  font-weight: 700;
-  height: 15%;
-  margin: 0;
-  text-transform: uppercase;
-  transition: all 0.15s ease-in-out;
-  width: 100%;
-}
-
 
 .view {
   background: #282A36;

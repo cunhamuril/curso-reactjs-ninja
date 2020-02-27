@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-const MarkdownEditor = ({ value, handleChange, getMarkup }) => (
-  <div className="editor">
+import Header from './markdown-editor-header'
+
+const MarkdownEditor = ({ value, handleChange, getMarkup, handleSave }) => (
+  <section className="editor">
+    <Header onSave={handleSave} />
+
     <textarea
       value={value}
       onChange={handleChange}
@@ -10,13 +14,15 @@ const MarkdownEditor = ({ value, handleChange, getMarkup }) => (
     />
 
     {/* dangerouslySetInnerHTML -> HTML Parser */}
-    <div className="view" dangerouslySetInnerHTML={getMarkup()} />
-  </div >
+    <article className="view" dangerouslySetInnerHTML={getMarkup()} />
+  </section>
 );
 
 MarkdownEditor.propTypes = {
   value: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
+  handleSave: PropTypes.func.isRequired,
+  getMarkup: PropTypes.func.isRequired
 }
 
 export default MarkdownEditor;

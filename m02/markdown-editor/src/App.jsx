@@ -35,6 +35,18 @@ class App extends Component {
       // Marked transforma o conteúdo de MD em HTML
       return { __html: marked(this.state.value) }
     }
+
+    this.handleSave = () => {
+      // Salvar no WebStorage
+      localStorage.setItem('md', this.state.value)
+    }
+  }
+
+  componentDidMount() {
+    // Pegar valor da chave md
+    const value = localStorage.getItem('md')
+
+    this.setState({ value })
   }
 
   render() {
@@ -42,6 +54,7 @@ class App extends Component {
       <MarkdownEditor
         value={this.state.value}
         handleChange={this.handleChange}
+        handleSave={this.handleSave}
         getMarkup={this.getMarkup}
       />
     );
