@@ -49,6 +49,17 @@ class App extends Component {
     this.setState({ value })
   }
 
+  componentDidUpdate() {
+    // limpar intervalo
+    clearInterval(this.timer)
+    // salvar depois de 1s quando parar de igitar
+    this.timer = setTimeout(() => this.handleSave(), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer)
+  }
+
   render() {
     return (
       <MarkdownEditor
