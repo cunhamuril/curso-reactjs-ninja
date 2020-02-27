@@ -33,17 +33,14 @@ body {
   width: 100%;
 }
 
-.editor-header button{
-  border: 0;
-  background: #1e801e;
-  color: #fff;
-  text-transform: uppercase;  
-  padding: 0 20px;
-}
+.editor-header .save-message{
+  border: 0;  
+  color: #FFF;
+  padding: 0 20px;  
+  margin: 0;
 
-.editor-header button:hover{
-  filter: brightness(0.9);
-  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 textarea,

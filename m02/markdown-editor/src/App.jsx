@@ -22,12 +22,16 @@ import('highlight.js').then(hljs => {
 class App extends Component {
   constructor() {
     super()
-    this.state = { value: '' }
+    this.state = {
+      value: '',
+      isSaving: false,
+    }
 
     // Bind sendo feito dentro do constructor
     this.handleChange = (e) => {
       this.setState({
-        value: e.target.value
+        value: e.target.value,
+        isSaving: true
       })
     }
 
@@ -39,6 +43,7 @@ class App extends Component {
     this.handleSave = () => {
       // Salvar no WebStorage
       localStorage.setItem('md', this.state.value)
+      this.setState({ isSaving: false })
     }
   }
 
@@ -64,8 +69,8 @@ class App extends Component {
     return (
       <MarkdownEditor
         value={this.state.value}
+        isSaving={this.state.isSaving}
         handleChange={this.handleChange}
-        handleSave={this.handleSave}
         getMarkup={this.getMarkup}
       />
     );

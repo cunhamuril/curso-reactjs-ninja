@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 
 import Header from './markdown-editor-header'
 
-const MarkdownEditor = ({ value, handleChange, getMarkup, handleSave }) => (
+const MarkdownEditor = ({ value, handleChange, getMarkup, isSaving }) => (
   <section className="editor">
-    <Header onSave={handleSave} />
+    <Header isSaving={isSaving} />
 
     <textarea
       value={value}
@@ -21,7 +21,7 @@ const MarkdownEditor = ({ value, handleChange, getMarkup, handleSave }) => (
 MarkdownEditor.propTypes = {
   value: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
-  handleSave: PropTypes.func.isRequired,
+  isSaving: PropTypes.bool.isRequired,
   getMarkup: PropTypes.func.isRequired
 }
 

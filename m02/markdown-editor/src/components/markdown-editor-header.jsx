@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-const MarkdownEditorHeader = ({ onSave }) => (
+const MarkdownEditorHeader = ({ isSaving }) => (
   <header className="editor-header">
-    <button onClick={onSave}>Salvar</button>
+    <p className="save-message">
+      {isSaving ? 'Salvando...' : 'Salvo!'}
+    </p>
   </header>
 );
 
 MarkdownEditorHeader.propTypes = {
-  onSave: PropTypes.func.isRequired,
+  isSaving: PropTypes.bool.isRequired,
 }
 
 export default MarkdownEditorHeader;
