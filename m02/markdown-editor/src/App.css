@@ -33,7 +33,7 @@ body {
   width: 100%;
 }
 
-.editor-header .save-message{
+.editor-header .save-message {
   border: 0;  
   color: #FFF;
   padding: 0 20px;  
@@ -43,9 +43,29 @@ body {
   align-items: center;
 }
 
+.editor-header .button-remove {
+  border: 0;
+  background-color: crimson;
+  color: #FFF;
+  font-weight: 700;
+  padding: 0 20px;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+}
+
+.editor-header .button-remove:hover {
+  background-color: #b91133;
+  cursor: pointer;
+}
+
+.editor-header .button-remove:active {
+  background-color: #830c24;
+  cursor: pointer;  
+}
+
 textarea,
 .view {
-  height: 100%;
+  height: calc(100% - 40px);
   min-width: 50%;  
   max-width: 50%;
 }
