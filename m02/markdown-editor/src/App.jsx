@@ -24,7 +24,7 @@ class App extends Component {
     super()
     this.state = {
       value: '',
-      isSaving: false,
+      isSaving: null,
     }
 
     // Bind sendo feito dentro do constructor
@@ -55,6 +55,17 @@ class App extends Component {
 
       this.setState({ value: '' })
     }
+
+    this.handleCreate = () => {
+      // Criar novo
+      this.setState({ value: '' })
+      this.textarea.focus() // Focar no textarea      
+    }
+
+    this.textareaRef = node => {
+      // Referência do textarae
+      this.textarea = node
+    }
   }
 
   componentDidMount() {
@@ -81,7 +92,9 @@ class App extends Component {
         isSaving={this.state.isSaving}
         handleChange={this.handleChange}
         handleRemove={this.handleRemove}
+        handleCreate={this.handleCreate}
         getMarkup={this.getMarkup}
+        textareaRef={this.textareaRef}
       />
     );
   }
