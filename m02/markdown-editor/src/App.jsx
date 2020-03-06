@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import marked from "marked";
+import { v4 } from "node-uuid";
 
 import MarkdownEditor from "./views/markdown-editor";
 
@@ -22,8 +23,14 @@ import("highlight.js").then(hljs => {
 class App extends Component {
   constructor() {
     super();
-    this.state = {
+    //
+    this.clearState = () => ({
       value: "",
+      id: v4() // v4 gera um hash aleatório
+    });
+
+    this.state = {
+      ...this.clearState(),
       isSaving: null
     };
 
@@ -35,35 +42,38 @@ class App extends Component {
       });
     };
 
+    // Marked transforma o conteúdo de MD em HTML
     this.getMarkup = () => {
-      // Marked transforma o conteúdo de MD em HTML
       return { __html: marked(this.state.value) };
     };
 
+    // Salvar no localStorage
     this.handleSave = () => {
       if (this.state.isSaving) {
-        // Salvar no localStorage
-        localStorage.setItem("md", this.state.value);
+        localStorage.setItem(this.state.id, this.state.value);
 
         this.setState({ isSaving: false });
       }
     };
 
-    this.handleRemove = () => {
-      // Remover value do md
-      localStorage.removeItem("md");
-
-      this.setState({ value: "" });
-    };
-
-    this.handleCreate = () => {
-      // Criar novo
-      this.setState({ value: "" });
+    // Criar um novo
+    this.createNew = () => {
+      this.setState(this.clearState());
       this.textarea.focus(); // Focar no textarea
     };
 
+    // Remover value do md
+    this.handleRemove = () => {
+      localStorage.removeItem(this.state.id);
+      this.createNew();
+    };
+
+    this.handleCreate = () => {
+      this.createNew();
+    };
+
+    // Referência do textarae
     this.textareaRef = node => {
-      // Referência do textarae
       this.textarea = node;
     };
   }
