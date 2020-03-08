@@ -60,19 +60,19 @@ class App extends Component {
     // Salvar no localStorage
     this.handleSave = () => {
       if (this.state.isSaving) {
-        const newFile = {
-          title: this.state.title || "Sem título",
-          content: this.state.value
+        const files = {
+          ...this.state.files,
+          [this.state.id]: {
+            title: this.state.title || "Sem título",
+            content: this.state.value
+          }
         };
 
-        localStorage.setItem(this.state.id, JSON.stringify(newFile));
+        localStorage.setItem("markdown-editor", JSON.stringify(files));
 
         this.setState({
           isSaving: false,
-          files: {
-            ...this.state.files,
-            [this.state.id]: JSON.stringify(newFile)
-          }
+          files
         });
       }
     };
@@ -85,8 +85,6 @@ class App extends Component {
 
     // Remover value do md
     this.handleRemove = () => {
-      localStorage.removeItem(this.state.id);
-
       // let files = Object.keys(this.state.files).reduce((acc, fileId) => {
       //   return fileId === this.state.id
       //     ? acc
@@ -98,6 +96,9 @@ class App extends Component {
 
       // Tem a mesma função que o código acima
       const { [this.state.id]: id, ...files } = this.state.files;
+
+      // Agora não vai mais remover a entrada. Vai apenas atualizar os dados
+      localStorage.setItem("markdown-editor", JSON.stringify(files));
 
       this.setState({ files });
       this.createNew();
@@ -127,19 +128,23 @@ class App extends Component {
 
   componentDidMount() {
     // Object.keys = transforma objeto em array pegando as chaves
-    const files = Object.keys(localStorage);
-    this.setState({
-      // Reduce vai reduzir tudo em objeto passando o valor do arquivo no state
-      files: files
-        .filter(id => id.match(/^\w{8}-\w{4}-\w{4}-\w{4}-\w{12}$/)) // Filtrar o tipo de key do localstorage com RegEx
-        .reduce(
-          (acc, fileId) => ({
-            ...acc,
-            [fileId]: JSON.parse(localStorage.getItem(fileId))
-          }),
-          {}
-        )
-    });
+
+    const files = JSON.parse(localStorage.getItem("markdown-editor"));
+    this.setState({ files });
+
+    // const files = Object.keys(localStorage);
+    // this.setState({
+    //   // Reduce vai reduzir tudo em objeto passando o valor do arquivo no state
+    //   files: files
+    //     .filter(id => id.match(/^\w{8}-\w{4}-\w{4}-\w{4}-\w{12}$/)) // Filtrar o tipo de key do localstorage com RegEx
+    //     .reduce(
+    //       (acc, fileId) => ({
+    //         ...acc,
+    //         [fileId]: JSON.parse(localStorage.getItem(fileId))
+    //       }),
+    //       {}
+    //     )
+    // });
   }
 
   componentDidUpdate() {
