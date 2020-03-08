@@ -1,5 +1,5 @@
-@import '~normalize.css';
-@import '~highlight.js/styles/dracula.css';
+@import "~normalize.css";
+@import "~highlight.js/styles/dracula.css";
 
 * {
   box-sizing: border-box;
@@ -34,9 +34,9 @@ body {
 }
 
 .editor-header .save-message {
-  border: 0;  
-  color: #FFF;
-  padding: 0 20px;  
+  border: 0;
+  color: #fff;
+  padding: 0 20px;
   margin: 0;
 
   display: flex;
@@ -46,16 +46,16 @@ body {
 textarea,
 .view {
   height: calc(100% - 40px);
-  min-width: 50%;  
-  max-width: 50%;
+  min-width: 40%;
+  max-width: 40%;
 }
 
 textarea {
   border: solid 4px #fc0;
   font-family: monospace;
-  font-size: 18px;  
+  font-size: 18px;
   padding: 10px;
-  resize: none;  
+  resize: none;
   width: 100%;
 }
 
@@ -64,9 +64,15 @@ textarea:focus {
 }
 
 .view {
-  background: #282A36;
+  background: #282a36;
   color: #fff;
   font-family: sans-serif;
   overflow: auto;
   padding: 10px;
+}
+
+.files-list-container {
+  min-width: 20%;
+  max-width: 20%;
+  background-color: #fc0;
 }

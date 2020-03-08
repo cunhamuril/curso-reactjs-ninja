@@ -23,7 +23,7 @@ import("highlight.js").then(hljs => {
 class App extends Component {
   constructor() {
     super();
-    //
+
     this.clearState = () => ({
       value: "",
       id: v4() // v4 gera um hash aleatório
@@ -31,7 +31,8 @@ class App extends Component {
 
     this.state = {
       ...this.clearState(),
-      isSaving: null
+      isSaving: null,
+      files: {}
     };
 
     // Bind sendo feito dentro do constructor
@@ -76,12 +77,29 @@ class App extends Component {
     this.textareaRef = node => {
       this.textarea = node;
     };
+
+    // Abrir arquivos
+    this.handleOpenFile = fileId => () => {
+      this.setState({
+        value: this.state.files[fileId], // Alterar valor atual pelo arquivo selecionado
+        id: fileId // Alterar ID atual pelo arquivo selecionado, para não cometer o erro de salvar com outro ID
+      });
+    };
   }
 
   componentDidMount() {
-    // Pegar valor da chave md
-    const value = localStorage.getItem("md");
-    this.setState({ value: value || "" });
+    // Object.keys = transforma objeto em array pegando as chaves
+    const files = Object.keys(localStorage);
+    this.setState({
+      // Reduce vai reduzir tudo em objeto passando o valor do arquivo no state
+      files: files.reduce(
+        (acc, fileId) => ({
+          ...acc,
+          [fileId]: localStorage.getItem(fileId)
+        }),
+        {}
+      )
+    });
   }
 
   componentDidUpdate() {
@@ -105,6 +123,8 @@ class App extends Component {
         handleCreate={this.handleCreate}
         getMarkup={this.getMarkup}
         textareaRef={this.textareaRef}
+        files={this.state.files}
+        handleOpenFile={this.handleOpenFile}
       />
     );
   }

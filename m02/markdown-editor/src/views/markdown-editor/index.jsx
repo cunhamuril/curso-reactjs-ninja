@@ -1,12 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
-import Header from './header'
+import Header from "./header";
+import Files from "./files";
 
-const MarkdownEditor = ({ value, handleChange, getMarkup, textareaRef, ...props }) => (
+const MarkdownEditor = ({
+  value,
+  handleChange,
+  getMarkup,
+  textareaRef,
+  files,
+  handleOpenFile,
+  ...props
+}) => (
   <section className="editor">
     {/* Refactor: passando props via rest operator */}
     <Header {...props} />
+
+    <Files files={files} handleOpenFile={handleOpenFile} />
 
     <textarea
       value={value}
@@ -24,7 +35,7 @@ MarkdownEditor.propTypes = {
   value: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   getMarkup: PropTypes.func.isRequired,
-  textareaRef: PropTypes.func.isRequired,
-}
+  textareaRef: PropTypes.func.isRequired
+};
 
 export default MarkdownEditor;
