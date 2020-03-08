@@ -53,7 +53,13 @@ class App extends Component {
       if (this.state.isSaving) {
         localStorage.setItem(this.state.id, this.state.value);
 
-        this.setState({ isSaving: false });
+        this.setState({
+          isSaving: false,
+          files: {
+            ...this.state.files,
+            [this.state.id]: this.state.value
+          }
+        });
       }
     };
 
