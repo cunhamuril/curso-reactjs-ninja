@@ -100,7 +100,7 @@ class App extends Component {
       // Agora não vai mais remover a entrada. Vai apenas atualizar os dados
       localStorage.setItem("markdown-editor", JSON.stringify(files));
 
-      this.setState({ files });
+      this.setState({ files, isSaving: null });
       this.createNew();
     };
 

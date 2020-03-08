@@ -12,14 +12,15 @@ const MarkdownEditorHeader = ({
   onChange
 }) => (
   <header className="editor-header">
+    <SaveMessage isSaving={isSaving} />
+
     <input
       type="text"
       value={title}
       placeholder="Sem título"
       onChange={onChange}
+      className="input-title"
     />
-
-    <SaveMessage isSaving={isSaving} />
 
     <Button onClick={handleCreate} kind="success">
       Criar novo
