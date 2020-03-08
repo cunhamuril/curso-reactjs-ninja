@@ -15,13 +15,13 @@ const MarkdownEditor = ({
 }) => (
   <section className="editor">
     {/* Refactor: passando props via rest operator */}
-    <Header {...props} />
+    <Header {...props} onChange={handleChange("title")} />
 
     <Files files={files} handleOpenFile={handleOpenFile} />
 
     <textarea
       value={value}
-      onChange={handleChange}
+      onChange={handleChange("value")}
       autoFocus // Automaticamente foca no elemento sem precisar clicar nele
       ref={textareaRef}
     />

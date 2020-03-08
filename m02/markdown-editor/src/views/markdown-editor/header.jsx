@@ -1,10 +1,24 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Button from "../../components/button";
 import SaveMessage from "../../components/save-message";
 
-const MarkdownEditorHeader = ({ isSaving, handleRemove, handleCreate }) => (
+const MarkdownEditorHeader = ({
+  title,
+  isSaving,
+  handleRemove,
+  handleCreate,
+  onChange
+}) => (
   <header className="editor-header">
+    <input
+      type="text"
+      value={title}
+      placeholder="Sem título"
+      onChange={onChange}
+    />
+
     <SaveMessage isSaving={isSaving} />
 
     <Button onClick={handleCreate} kind="success">
@@ -16,5 +30,11 @@ const MarkdownEditorHeader = ({ isSaving, handleRemove, handleCreate }) => (
     </Button>
   </header>
 );
+
+MarkdownEditorHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+  handleRemove: PropTypes.func.isRequired,
+  handleCreate: PropTypes.func.isRequired
+};
 
 export default MarkdownEditorHeader;

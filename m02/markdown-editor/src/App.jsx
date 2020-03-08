@@ -25,6 +25,7 @@ class App extends Component {
     super();
 
     this.clearState = () => ({
+      title: "",
       value: "",
       id: v4() // v4 gera um hash aleatório
     });
@@ -36,9 +37,17 @@ class App extends Component {
     };
 
     // Bind sendo feito dentro do constructor
-    this.handleChange = e => {
+
+    this.handleChange = field => e => {
       this.setState({
-        value: e.target.value,
+        [field]: e.target.value,
+        isSaving: true
+      });
+    };
+
+    this.handleChangeTitle = e => {
+      this.setState({
+        title: e.target.value,
         isSaving: true
       });
     };
@@ -52,7 +61,7 @@ class App extends Component {
     this.handleSave = () => {
       if (this.state.isSaving) {
         const newFile = {
-          title: "Sem título",
+          title: this.state.title || "Sem título",
           content: this.state.value
         };
 
@@ -105,8 +114,12 @@ class App extends Component {
 
     // Abrir arquivos
     this.handleOpenFile = fileId => () => {
+      const { title, content } = this.state.files[fileId];
+
+      // Alterar valor atual pelo arquivo selecionado
       this.setState({
-        value: this.state.files[fileId].content, // Alterar valor atual pelo arquivo selecionado
+        title,
+        value: content,
         id: fileId // Alterar ID atual pelo arquivo selecionado, para não cometer o erro de salvar com outro ID
       });
     };
@@ -117,13 +130,15 @@ class App extends Component {
     const files = Object.keys(localStorage);
     this.setState({
       // Reduce vai reduzir tudo em objeto passando o valor do arquivo no state
-      files: files.reduce(
-        (acc, fileId) => ({
-          ...acc,
-          [fileId]: JSON.parse(localStorage.getItem(fileId))
-        }),
-        {}
-      )
+      files: files
+        .filter(id => id.match(/^\w{8}-\w{4}-\w{4}-\w{4}-\w{12}$/)) // Filtrar o tipo de key do localstorage com RegEx
+        .reduce(
+          (acc, fileId) => ({
+            ...acc,
+            [fileId]: JSON.parse(localStorage.getItem(fileId))
+          }),
+          {}
+        )
     });
   }
 
@@ -150,6 +165,7 @@ class App extends Component {
         textareaRef={this.textareaRef}
         files={this.state.files}
         handleOpenFile={this.handleOpenFile}
+        title={this.state.title}
       />
     );
   }
