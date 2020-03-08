@@ -51,13 +51,18 @@ class App extends Component {
     // Salvar no localStorage
     this.handleSave = () => {
       if (this.state.isSaving) {
-        localStorage.setItem(this.state.id, this.state.value);
+        const newFile = {
+          title: "Sem título",
+          content: this.state.value
+        };
+
+        localStorage.setItem(this.state.id, JSON.stringify(newFile));
 
         this.setState({
           isSaving: false,
           files: {
             ...this.state.files,
-            [this.state.id]: this.state.value
+            [this.state.id]: JSON.stringify(newFile)
           }
         });
       }
@@ -101,7 +106,7 @@ class App extends Component {
     // Abrir arquivos
     this.handleOpenFile = fileId => () => {
       this.setState({
-        value: this.state.files[fileId], // Alterar valor atual pelo arquivo selecionado
+        value: this.state.files[fileId].content, // Alterar valor atual pelo arquivo selecionado
         id: fileId // Alterar ID atual pelo arquivo selecionado, para não cometer o erro de salvar com outro ID
       });
     };
@@ -115,7 +120,7 @@ class App extends Component {
       files: files.reduce(
         (acc, fileId) => ({
           ...acc,
-          [fileId]: localStorage.getItem(fileId)
+          [fileId]: JSON.parse(localStorage.getItem(fileId))
         }),
         {}
       )
