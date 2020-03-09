@@ -7,11 +7,7 @@ class MessageList extends Component {
     return (
       <ul>
         {this.props.messages.map(message => (
-          <Message
-            text={message.text}
-            key={message.text}
-            color={this.props.color}
-          />
+          <Message text={message.text} key={message.text} />
         ))}
       </ul>
     );
