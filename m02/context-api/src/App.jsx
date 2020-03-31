@@ -5,18 +5,35 @@ import PropTypes from "prop-types";
 class App extends PureComponent {
   constructor() {
     super();
-    this.state = { color: "purple " };
+    // this.state = { color: "purple " };
 
-    this.setColor = color => () => {
-      this.setState({ color });
+    let subscriptions = [];
+
+    const subscribe = f => {
+      subscriptions.push(f);
+      return () => {
+        subscriptions = subscriptions.filter(func => func !== f);
+      };
+    };
+
+    const setColor = (color, update) => () => {
+      // this.setState({ color });
+      this.store.color = color;
+      subscriptions.forEach(f => {
+        console.log("subscriptions");
+        f();
+      });
+    };
+
+    this.store = {
+      color: "purple",
+      setColor,
+      subscribe
     };
   }
 
   getChildContext() {
-    return {
-      color: this.state.color,
-      setColor: this.setColor
-    };
+    return { store: this.store };
   }
 
   render() {
@@ -35,8 +52,7 @@ class App extends PureComponent {
 }
 
 App.childContextTypes = {
-  color: PropTypes.string,
-  setColor: PropTypes.func
+  store: PropTypes.object
 };
 
 export default App;
