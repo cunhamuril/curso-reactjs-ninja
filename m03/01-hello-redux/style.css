@@ -22,14 +22,14 @@ button {
   cursor: pointer;
   font-size: 48px;
   font-weight: bold;
-  background: crimson;
+  background: #6153bd;
   transition: all 0.2s;
 }
 
 button:hover {
-  background: #a5102d;
+  background: #483d8b;
 }
 
 button:active {
-  background: #5d091a;
+  background: #332c64;
 }
