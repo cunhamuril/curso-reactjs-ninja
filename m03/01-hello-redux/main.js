@@ -17,24 +17,24 @@ const counter = (state = 0, action) => {
 };
 
 const { createStore } = Redux;
-
 const store = createStore(counter);
 
-/**
- * getState: método para pegar o estado do store
- */
-console.log(store.getState());
-
-/**
- * subscribe(() => {}): método que recebe uma função por parâmetro que vai ser executada sempre que for disparada uma ação
- */
+// Quando mudar o state, o subscribe vai alterar o valor do counter
 store.subscribe(() => {
-  console.log("Disparou uma ação!", store.getState());
+  $counter.textContent = store.getState();
 });
 
-/**
- * dispatch({ type: 'AÇÃO' }): método que dispara uma ação
- */
-store.dispatch({ type: "INCREMENT" });
-store.dispatch({ type: "INCREMENT" });
-store.dispatch({ type: "DECREMENT" });
+const $counter = document.querySelector('[data-js="counter"]');
+const $decrement = document.querySelector('[data-js="decrement"]');
+const $increment = document.querySelector('[data-js="increment"]');
+
+$decrement.addEventListener("click", decrement, false);
+$increment.addEventListener("click", increment, false);
+
+function decrement() {
+  store.dispatch({ type: "DECREMENT" });
+}
+
+function increment() {
+  store.dispatch({ type: "INCREMENT" });
+}
