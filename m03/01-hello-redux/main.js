@@ -16,13 +16,37 @@ const counter = (state = 0, action) => {
   }
 };
 
-const { createStore } = Redux;
-const store = createStore(counter);
+const createStore = reducer => {
+  let state;
+  let subscriptions = [];
 
-// Quando mudar o state, o subscribe vai alterar o valor do counter
-store.subscribe(() => {
-  $counter.textContent = store.getState();
-});
+  // dispatch vai receber a action como parâmentro e passar para o reducer que com seu retorno define o valor de state
+  const dispatch = action => {
+    state = reducer(state, action);
+
+    // Subscriptions vai executar cada função que foi passada por parâmetro quando for feito um dispatch
+    subscriptions.forEach(f => f());
+  };
+
+  // Subscribe pega a função que foi passada por parâmetro e armazena no array
+  const subscribe = func => {
+    subscriptions.push(func);
+
+    return () => {
+      subscriptions = subscriptions.filter(f => f !== func);
+    };
+  };
+
+  dispatch({});
+
+  return {
+    getState: () => state,
+    dispatch,
+    subscribe
+  };
+};
+
+const store = createStore(counter);
 
 const $counter = document.querySelector('[data-js="counter"]');
 const $decrement = document.querySelector('[data-js="decrement"]');
@@ -38,3 +62,16 @@ function decrement() {
 function increment() {
   store.dispatch({ type: "INCREMENT" });
 }
+
+// Função render vai atribuir o valor para o elemento do HTML
+function render() {
+  $counter.textContent = store.getState();
+}
+
+const unsubscribe = store.subscribe(render);
+render();
+
+setTimeout(() => {
+  console.log("unsubscribe");
+  unsubscribe();
+}, 5000);
