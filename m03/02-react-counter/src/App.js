@@ -4,8 +4,8 @@ import Counter from "./components/Counter";
 
 import "./App.css";
 
-function App() {
-  return <Counter />;
+function App({ store }) {
+  return <Counter store={store} />;
 }
 
 export default App;
