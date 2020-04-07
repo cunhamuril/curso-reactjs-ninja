@@ -4,11 +4,36 @@
 }
 
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   min-height: 97vh;
 
   background-color: #333;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Global Buttons */
+.button {
+  margin: 0 24px;
+
+  border: 0;
+  min-width: 3rem;
+  height: 3rem;
+  padding: 5px;
+  border-radius: 5px;
+
+  color: #fff;
+  font-size: 2em;
+  font-weight: bold;
+  background: #3824b8;
+  transition: background 0.2s;
+}
+
+.button:hover {
+  background: #271981;
+}
+
+.button:active {
+  background: #1c125c;
 }
