@@ -1,13 +1,8 @@
 // deepFreeze: Módulo que "congela" qualquer objeto ou array para ser uma constante
 import deepFreeze from "deep-freeze";
 
-import counters, {
-  ADD_COUNTER,
-  REMOVE_COUNTER,
-  INCREMENT,
-  DECREMENT,
-  initialState,
-} from "./index";
+import counters, { initialState } from "./index";
+import { ADD_COUNTER, REMOVE_COUNTER, INCREMENT, DECREMENT } from "./actions";
 
 it("counters should be a function", () => {
   expect(counters).toBe(counters);
