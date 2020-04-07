@@ -1,49 +1,39 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import { connect } from "react-redux";
 
-import Counter from "./Counter";
+import "./styles.css";
 
-class CounterContainer extends PureComponent {
-  constructor() {
-    super();
-
-    /**
-     * !! Counter e dispatch agora estão em this.props
-     *
-     * Dispatch é passado automaticamente,
-     * Counter é passado por causa do mapStateToProps
-     */
-    this.increment = () => {
-      this.props.dispatch({ type: "INCREMENT" });
-    };
-
-    this.decrement = () => {
-      this.props.dispatch({ type: "DECREMENT" });
-    };
-  }
-
-  render() {
-    return (
-      <Counter
-        counter={this.props.counter}
-        increment={this.increment}
-        decrement={this.decrement}
-      />
-    );
-  }
-}
+/**
+ * Como a manipulação de state está sendo apenas no Redux agora, o componente pode ser stateless
+ */
+const Counter = ({ counter, increment, decrement }) => (
+  <div className="counter">
+    <button onClick={decrement}>-</button>
+    <h1>{counter}</h1>
+    <button onClick={increment}>+</button>
+  </div>
+);
 
 /**
  * Função padrão do react-redux onde "mapea" o estado da aplicação e passa via props
  * @param {Any} state estado da aplicação
  */
-const mapStateToProps = (state) => {
-  return {
-    counter: state,
-  };
-};
+const mapStateToProps = (state) => ({
+  counter: state,
+});
 
 /**
- * É exportado a função connect 2x a primeira vez é com o mapStateToProps e a segunda é o componente atual
+ * Função padrão do react-redux onde "mapea" o dispatch e passa via props
+ * @param {Function} dispatch função dispatch que tem vai ser passada por props
  */
-export default connect(mapStateToProps)(CounterContainer);
+const mapDispatchToProps = (dispatch) => ({
+  increment: () => dispatch({ type: "INCREMENT" }),
+  decrement: () => dispatch({ type: "DECREMENT" }),
+});
+
+/**
+ * É exportado a função connect 2x
+ * a primeira vez é com o mapStateToProps e mapDispatchToProps
+ * a segunda é o componente atual
+ */
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
