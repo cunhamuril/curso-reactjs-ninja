@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { ThemeProvider } from "styled-components";
 
+import { Container, SwitchCustom } from "./App.styles";
+
+import GlobalStyle from "./styles/global";
+
 import light from "./styles/themes/light";
 import dark from "./styles/themes/dark";
 
-import GlobalStyle from "./styles/global";
 import Main from "./components/Main";
-
-import { Container, SwitchCustom } from "./App.styles";
 
 class App extends Component {
   constructor() {
