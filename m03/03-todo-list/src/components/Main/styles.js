@@ -15,11 +15,11 @@ export const Container = styled.div`
 
   background-color: ${(props) => props.theme.colors.primaryDark};
 
-  h3 {
+  > h3 {
     color: ${(props) => props.theme.colors.title};
   }
 
-  input {
+  > input {
     margin-top: 20px;
     padding: 10px 24px;
 
@@ -32,15 +32,16 @@ export const Container = styled.div`
     background-color: ${(props) => props.theme.colors.primaryLight};
   }
 
-  ul {
+  > ul {
+    width: 90%;
     margin-top: 40px;
-    min-width: 800px;
+    max-width: 800px;
 
     list-style: none;
     line-height: 26px;
   }
 
-  ul li.completed {
+  > ul li.completed {
     text-decoration: line-through;
   }
 `;
@@ -55,11 +56,11 @@ export const Filters = styled.div`
 
   margin-top: 40px;
 
-  h3 {
+  > h3 {
     font-weight: 300;
   }
 
-  ul {
+  > ul {
     display: flex;
     align-items: center;
 
@@ -70,16 +71,14 @@ export const Filters = styled.div`
     list-style: none;
     text-decoration: none;
 
-    li + li::before {
+    > li + li::before {
       content: "|";
 
       margin: 0 10px;
       color: ${(props) => props.theme.colors.primary};
     }
 
-    li > a {
-      display: inline-block;
-
+    > li > a {
       width: 128px;
       padding: 8px 24px;
       border-radius: 2px;
