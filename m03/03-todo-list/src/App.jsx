@@ -1,10 +1,13 @@
 import React from "react";
-import "./App.css";
+
+import GlobalStyle from "./styles/global";
+import Main from "./components/Main";
 
 function App() {
   return (
     <div className="App">
-      <h1>Todo List</h1>
+      <GlobalStyle />
+      <Main />
     </div>
   );
 }
