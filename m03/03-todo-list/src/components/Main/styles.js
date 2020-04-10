@@ -13,10 +13,10 @@ export const Container = styled.div`
 
   width: 100%;
 
-  background-color: #222;
+  background-color: ${(props) => props.theme.colors.primaryDark};
 
   h3 {
-    color: rgb(115, 134, 115);
+    color: ${(props) => props.theme.colors.title};
   }
 
   input {
@@ -28,8 +28,8 @@ export const Container = styled.div`
     max-width: 800px;
     border-radius: 25px;
 
-    color: #eee;
-    background-color: #555;
+    color: ${(props) => props.theme.colors.text};
+    background-color: ${(props) => props.theme.colors.primaryLight};
   }
 
   ul {
@@ -74,7 +74,7 @@ export const Filters = styled.div`
       content: "|";
 
       margin: 0 10px;
-      color: #444;
+      color: ${(props) => props.theme.colors.primary};
     }
 
     li > a {
@@ -84,15 +84,15 @@ export const Filters = styled.div`
       padding: 8px 24px;
       border-radius: 2px;
 
-      color: #eee;
+      color: ${(props) => props.theme.colors.text};
       font-size: 14px;
       text-align: center;
       text-decoration: none;
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: ${(props) => props.theme.colors.button};
       transition: background-color 0.2s;
 
       &:hover {
-        background-color: #000;
+        background-color: ${(props) => props.theme.colors.buttonHover};
       }
     }
   }

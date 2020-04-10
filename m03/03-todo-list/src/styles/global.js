@@ -14,8 +14,8 @@ export default createGlobalStyle`
   body {
     padding: 0 10px;
   
-    color: #eee;
-    background-color: #000;
+    color: ${(props) => props.theme.colors.text};
+    background-color: ${(props) => props.theme.colors.background};
   }
   
   #root {
