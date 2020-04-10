@@ -7,20 +7,30 @@ import dark from "./styles/themes/dark";
 import GlobalStyle from "./styles/global";
 import Main from "./components/Main";
 
-const themeStorage = localStorage.getItem("theme");
+import { Container, SwitchCustom } from "./App.styles";
+
+const themeStorage = JSON.parse(localStorage.getItem("theme"));
 
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      theme: themeStorage ? themeStorage.theme : light,
+      theme: themeStorage
+        ? themeStorage.theme.title === "light"
+          ? light
+          : dark
+        : light,
     };
 
     this.toggleTheme = () => {
+      const valueToToggle = this.state.theme?.title === "light" ? dark : light;
+
       this.setState({
-        theme: this.state.theme?.title === "light" ? dark : light,
+        theme: valueToToggle,
       });
+
+      localStorage.setItem("theme", JSON.stringify({ theme: valueToToggle }));
     };
   }
 
@@ -29,10 +39,21 @@ class App extends Component {
 
     return (
       <ThemeProvider theme={this.state.theme}>
-        <div className="App">
-          <GlobalStyle />
+        <GlobalStyle />
+        <Container>
+          <SwitchCustom
+            onChange={this.toggleTheme}
+            checked={this.state.theme === dark}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            height={15}
+            width={40}
+            handleDiameter={20}
+            offColor={this.state.theme?.colors.primary}
+            onColor={this.state.theme?.colors.primaryDark}
+          />
           <Main />
-        </div>
+        </Container>
       </ThemeProvider>
     );
   }

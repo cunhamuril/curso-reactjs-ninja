@@ -34,7 +34,7 @@ export const Container = styled.div`
 
   ul {
     margin-top: 40px;
-    min-width: 500px;
+    min-width: 800px;
 
     list-style: none;
     line-height: 26px;
