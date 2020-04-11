@@ -13,14 +13,12 @@ const Main = ({ todos, handleAddTodo }) => (
       <button type="submit">Adicionar</button>
     </FormTodo>
 
-    {console.log(todos)}
-
     <ListTodo>
-      <li className="completed">Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-      <li>Item 4</li>
-      <li>Item 5</li>
+      {todos.map((todo) => (
+        <li key={todo.id} className={todo.completed ? "completed" : ""}>
+          {todo.text}
+        </li>
+      ))}
     </ListTodo>
 
     <Filters>
