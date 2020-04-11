@@ -25,11 +25,20 @@ export const ListTodo = styled.ul`
   margin-top: 40px;
   max-width: 800px;
 
-  list-style: none;
   line-height: 26px;
+
+  > li {
+    cursor: pointer;
+    transition: color 0.1s;
+
+    &:hover {
+      color: ${(props) => props.theme.colors.primaryLight};
+    }
+  }
 
   > li.completed {
     text-decoration: line-through;
+    color: ${(props) => props.theme.colors.primaryLight};
   }
 `;
 
