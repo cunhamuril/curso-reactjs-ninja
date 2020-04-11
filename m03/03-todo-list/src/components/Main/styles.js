@@ -18,31 +18,54 @@ export const Container = styled.div`
   > h3 {
     color: ${(props) => props.theme.colors.title};
   }
+`;
+
+export const ListTodo = styled.ul`
+  width: 90%;
+  margin-top: 40px;
+  max-width: 800px;
+
+  list-style: none;
+  line-height: 26px;
+
+  > li.completed {
+    text-decoration: line-through;
+  }
+`;
+
+export const FormTodo = styled.form`
+  display: flex;
+
+  margin-top: 20px;
+
+  width: 90%;
+  height: 35px;
+  max-width: 800px;
 
   > input {
-    margin-top: 20px;
-    padding: 10px 24px;
+    flex: 1;
 
+    padding: 0 24px;
     border: 0;
-    width: 90%;
-    max-width: 800px;
-    border-radius: 25px;
+    border-radius: 25px 0 0 25px;
 
     color: ${(props) => props.theme.colors.text};
     background-color: ${(props) => props.theme.colors.primaryLight};
   }
 
-  > ul {
-    width: 90%;
-    margin-top: 40px;
-    max-width: 800px;
+  > button {
+    padding: 0 14px;
+    border: 0;
+    border-radius: 0 25px 25px 0;
 
-    list-style: none;
-    line-height: 26px;
-  }
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: ${(props) => props.theme.colors.text};
+    background-color: ${(props) => props.theme.colors.button};
 
-  > ul li.completed {
-    text-decoration: line-through;
+    &:hover {
+      background-color: ${(props) => props.theme.colors.buttonHover};
+    }
   }
 `;
 
