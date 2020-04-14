@@ -1,11 +1,13 @@
-import reducerTodos from "./todos";
-import reducerVisibilityFilter from "./visibilityFilter";
+import { combineReducers } from "redux";
 
-const rootReducer = (state = {}, action) => {
-  return {
-    todos: reducerTodos(state.todos, action),
-    visibilityFilter: reducerVisibilityFilter(state.visibilityFilter, action),
-  };
-};
+import todos from "./todos";
+import visibilityFilter from "./visibilityFilter";
 
-export default rootReducer;
+// const rootReducer = (state = {}, action) => {
+//   return {
+//     todos: reducerTodos(state.todos, action),
+//     visibilityFilter: reducerVisibilityFilter(state.visibilityFilter, action),
+//   };
+// };
+
+export default combineReducers({ todos, visibilityFilter });
