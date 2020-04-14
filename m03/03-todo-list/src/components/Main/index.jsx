@@ -6,7 +6,7 @@ import { Container, ListTodo, FormTodo, Filters } from "./styles";
 import {
   addTodo,
   toggleTodo,
-} from "../../redux-flow/reducers/todos/action-creators";
+} from "../../reduxFlow/reducers/todos/actionCreators";
 
 const Main = ({ todos, handleAddTodo, handleToggleTodo }) => (
   <Container>
