@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 
 import App from "./App";
 
-import reducer from "./redux-flow/reducers/todos";
+import reducer from "./reduxFlow/reducers";
 
 const store = createStore(reducer);
 
