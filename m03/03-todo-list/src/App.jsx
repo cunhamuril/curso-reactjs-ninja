@@ -8,7 +8,7 @@ import GlobalStyle from "./styles/global";
 import light from "./styles/themes/light";
 import dark from "./styles/themes/dark";
 
-import Main from "./components/Main";
+import Main from "./pages/Main";
 
 class App extends Component {
   constructor() {
