@@ -24,4 +24,8 @@ export default createGlobalStyle`
 
     min-height: 100vh;
   }
+
+  button {
+    cursor: pointer;
+  }
 `;

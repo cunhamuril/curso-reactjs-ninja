@@ -32,21 +32,26 @@ export const Container = styled.div`
       color: ${(props) => props.theme.colors.primary};
     }
 
-    > li > a {
+    > li > button {
       width: 128px;
       padding: 8px 24px;
       border-radius: 2px;
 
-      color: ${(props) => props.theme.colors.text};
+      border: 0;
       font-size: 14px;
       text-align: center;
       text-decoration: none;
-      background-color: ${(props) => props.theme.colors.button};
       transition: background-color 0.2s;
+      color: ${(props) => props.theme.colors.text};
+      background-color: ${(props) => props.theme.colors.button};
 
       &:hover {
         background-color: ${(props) => props.theme.colors.buttonHover};
       }
+    }
+
+    > li > .active {
+      background-color: ${(props) => props.theme.colors.buttonHover};
     }
   }
 `;
