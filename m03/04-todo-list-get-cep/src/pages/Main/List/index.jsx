@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 
 import { Container } from "./styles";
 
-import { toggleTodo } from "../../reduxFlow/reducers/todos/actionCreators";
+import { toggleTodo } from "../../../reduxFlow/reducers/todos/actionCreators";
 import {
   SHOW_ALL,
   SHOW_COMPLETED,
   SHOW_ACTIVE,
-} from "../../reduxFlow/reducers/visibilityFilter/actions";
+} from "../../../reduxFlow/reducers/visibilityFilter/actions";
 
 const TodosList = ({ todos, activeFilter, handleToggleTodo }) => (
   <Container>

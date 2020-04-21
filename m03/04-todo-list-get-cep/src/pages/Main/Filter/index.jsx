@@ -5,8 +5,8 @@ import {
   SHOW_ALL,
   SHOW_COMPLETED,
   SHOW_ACTIVE,
-} from "../../reduxFlow/reducers/visibilityFilter/actions";
-import { setVisibilityFilter } from "../../reduxFlow/reducers/visibilityFilter/actionCreators";
+} from "../../../reduxFlow/reducers/visibilityFilter/actions";
+import { setVisibilityFilter } from "../../../reduxFlow/reducers/visibilityFilter/actionCreators";
 
 import { Container } from "./styles";
 
