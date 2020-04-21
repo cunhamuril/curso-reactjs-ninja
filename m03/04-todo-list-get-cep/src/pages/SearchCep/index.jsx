@@ -14,20 +14,28 @@ class SearchCep extends PureComponent {
     status: 1,
   };
 
-  async componentDidMount() {
+  handleSubmit = async (e) => {
+    e.preventDefault();
+
     const response = await ajax().get(
       "https://apps.widenet.com.br/busca-cep/api/cep.json",
-      { code: "06233-030" }
+      { code: e.target.cep.value }
     );
 
+    console.log(response);
+
     this.setState(response);
-  }
+  };
 
   render() {
     return (
       <>
         <h3>BUSCAR CEP - REACT REDUX ASYNC EXAMPLE</h3>
-        <Form btnLabel="Buscar endereço" />
+        <Form
+          handleSubmit={this.handleSubmit}
+          btnLabel="Buscar endereço"
+          name="cep"
+        />
 
         <Table {...this.state} />
       </>

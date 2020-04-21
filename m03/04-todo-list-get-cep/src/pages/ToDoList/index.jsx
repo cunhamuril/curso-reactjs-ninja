@@ -10,7 +10,7 @@ import { addTodo } from "../../reduxFlow/reducers/todos/actionCreators";
 const Main = ({ handleAddTodo }) => (
   <>
     <h3>TO DO LIST - REDUX EXAMPLE</h3>
-    <Form handleSubmit={handleAddTodo} btnLabel="Adicionar" />
+    <Form handleSubmit={handleAddTodo} btnLabel="Adicionar" name="todo" />
     <List />
     <Filter />
   </>
