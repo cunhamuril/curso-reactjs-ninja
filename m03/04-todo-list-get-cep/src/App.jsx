@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { ThemeProvider } from "styled-components";
+import { BrowserRouter } from "react-router-dom";
 
 import { Container, SwitchCustom } from "./App.styles";
 
@@ -8,7 +9,8 @@ import GlobalStyle from "./styles/global";
 import light from "./styles/themes/light";
 import dark from "./styles/themes/dark";
 
-import Main from "./pages/Main";
+import Layout from "./components/Layout";
+import Routes from "./Routes";
 
 class App extends Component {
   constructor() {
@@ -36,21 +38,25 @@ class App extends Component {
   render() {
     return (
       <ThemeProvider theme={this.state.theme}>
-        <GlobalStyle />
-        <Container>
-          <SwitchCustom
-            onChange={this.toggleTheme}
-            checked={this.state.theme === dark}
-            checkedIcon={false}
-            uncheckedIcon={false}
-            height={15}
-            width={40}
-            handleDiameter={20}
-            offColor={this.state.theme.colors.primary}
-            onColor={this.state.theme.colors.primaryDark}
-          />
-          <Main />
-        </Container>
+        <BrowserRouter>
+          <GlobalStyle />
+          <Container>
+            <SwitchCustom
+              onChange={this.toggleTheme}
+              checked={this.state.theme === dark}
+              checkedIcon={false}
+              uncheckedIcon={false}
+              height={15}
+              width={40}
+              handleDiameter={20}
+              offColor={this.state.theme.colors.primary}
+              onColor={this.state.theme.colors.primaryDark}
+            />
+            <Layout>
+              <Routes />
+            </Layout>
+          </Container>
+        </BrowserRouter>
       </ThemeProvider>
     );
   }

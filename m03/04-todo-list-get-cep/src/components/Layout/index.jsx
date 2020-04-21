@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 import { Container, Header } from "./styles";
 
@@ -13,12 +14,9 @@ const Layout = ({ children }) => (
       <ul>
         {pages.map((page) => (
           <li>
-            <a
-              href={page.path}
-              className={window.location.pathname === page.path ? "active" : ""}
-            >
+            <NavLink exact to={page.path}>
               {page.title}
-            </a>
+            </NavLink>
           </li>
         ))}
       </ul>
