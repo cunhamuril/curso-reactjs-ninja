@@ -1,9 +1,19 @@
 import React, { PureComponent } from "react";
+import ajax from "@fdaciuk/ajax";
 
 import Form from "../../components/Form";
 import Table from "./Table";
 
 class SearchCep extends PureComponent {
+  async componentDidMount() {
+    const response = await ajax().get(
+      "https://apps.widenet.com.br/busca-cep/api/cep.json",
+      { code: "06233-030" }
+    );
+
+    console.log(response);
+  }
+
   render() {
     return (
       <>
