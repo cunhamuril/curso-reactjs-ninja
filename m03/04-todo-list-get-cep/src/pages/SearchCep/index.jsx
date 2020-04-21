@@ -4,6 +4,8 @@ import ajax from "@fdaciuk/ajax";
 import Form from "../../components/Form";
 import Table from "./Table";
 
+import { Message } from "./styles";
+
 class SearchCep extends PureComponent {
   state = {
     address: "",
@@ -11,11 +13,15 @@ class SearchCep extends PureComponent {
     code: "",
     district: "",
     state: "",
-    status: 1,
+    ok: null,
+    message: "Busque por algum CEP",
+    isFetching: false,
   };
 
   handleSubmit = async (e) => {
     e.preventDefault();
+
+    this.setState({ isFetching: true });
 
     const response = await ajax().get(
       "https://apps.widenet.com.br/busca-cep/api/cep.json",
@@ -24,7 +30,7 @@ class SearchCep extends PureComponent {
 
     console.log(response);
 
-    this.setState(response);
+    this.setState({ ...response, isFetching: false });
   };
 
   render() {
@@ -37,7 +43,17 @@ class SearchCep extends PureComponent {
           name="cep"
         />
 
-        <Table {...this.state} />
+        {this.state.isFetching ? (
+          <Message>
+            <h5>Buscando...</h5>
+          </Message>
+        ) : this.state.ok ? (
+          <Table {...this.state} />
+        ) : (
+          <Message>
+            <h5>{this.state.message}</h5>
+          </Message>
+        )}
       </>
     );
   }
