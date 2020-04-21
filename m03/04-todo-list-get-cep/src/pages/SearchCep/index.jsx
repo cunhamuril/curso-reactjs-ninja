@@ -1,36 +1,19 @@
-import React from "react";
-
-import { Table } from "./styles";
+import React, { PureComponent } from "react";
 
 import Form from "../../components/Form";
+import Table from "./Table";
 
-const SearchCep = () => (
-  <>
-    <h3>BUSCAR CEP - REACT REDUX ASYNC EXAMPLE</h3>
-    <Form btnLabel="Buscar endereço" />
+class SearchCep extends PureComponent {
+  render() {
+    return (
+      <>
+        <h3>BUSCAR CEP - REACT REDUX ASYNC EXAMPLE</h3>
+        <Form btnLabel="Buscar endereço" />
 
-    <Table>
-      <thead>
-        <tr>
-          <td>CEP</td>
-          <td>Endereço</td>
-          <td>Bairro</td>
-          <td>Cidade</td>
-          <td>Estado</td>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>000000000</td>
-          <td>Rua Tal</td>
-          <td>Bairro legal</td>
-          <td>Cidade Massa</td>
-          <td>SP</td>
-        </tr>
-      </tbody>
-    </Table>
-  </>
-);
+        <Table />
+      </>
+    );
+  }
+}
 
 export default SearchCep;

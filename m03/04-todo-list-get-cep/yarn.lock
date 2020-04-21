@@ -1145,6 +1145,11 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
+"@fdaciuk/ajax@^3.0.4":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@fdaciuk/ajax/-/ajax-3.0.4.tgz#408645e0b0e0e38333cdb8247e2b91ffe871bbda"
+  integrity sha512-pVTxdfHLSy3Pb0VGVk3NX9L/ahZ6hexJudtLsyR6/a7A4+Kyh7dY0mnMatODXswPQ0tkId1zuEKCjmalnCyYtQ==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
