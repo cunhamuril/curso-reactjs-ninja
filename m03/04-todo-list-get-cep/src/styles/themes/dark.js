@@ -2,15 +2,15 @@ export default {
   title: "dark",
 
   colors: {
-    primary: "#333",
-    primaryDark: "#222",
-    primaryLight: "#555",
+    primary: "#333333",
+    primaryDark: "#222222",
+    primaryLight: "#555555",
 
     button: "rgba(0, 0, 0, 0.4)",
-    buttonHover: "#000",
+    buttonHover: "#000000",
 
-    text: "#eee",
+    text: "#eeeeee",
     title: "#738673",
-    background: "#000",
+    background: "#000000",
   },
 };

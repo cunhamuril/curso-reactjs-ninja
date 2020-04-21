@@ -12,8 +12,8 @@ const Layout = ({ children }) => (
   <Container>
     <Header>
       <ul>
-        {pages.map((page) => (
-          <li>
+        {pages.map((page, index) => (
+          <li key={index}>
             <NavLink exact to={page.path}>
               {page.title}
             </NavLink>

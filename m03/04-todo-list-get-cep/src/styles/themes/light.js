@@ -2,15 +2,15 @@ export default {
   title: "light",
 
   colors: {
-    primary: "#CCC",
+    primary: "#CCCCCC",
     primaryDark: "#DADADA",
-    primaryLight: "#FFF",
+    primaryLight: "#FFFFFF",
 
-    button: "#BBB",
-    buttonHover: "#FFF",
+    button: "#BBBBBB",
+    buttonHover: "#FFFFFF",
 
-    text: "#222",
+    text: "#222222",
     title: "#272e27",
-    background: "#FFF",
+    background: "#FFFFFF",
   },
 };
