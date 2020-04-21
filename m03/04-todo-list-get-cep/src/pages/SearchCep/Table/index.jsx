@@ -2,7 +2,7 @@ import React from "react";
 
 import { Container } from "./styles";
 
-const Table = () => (
+const Table = ({ address, city, code, district, state, status }) => (
   <Container>
     <thead>
       <tr>
@@ -16,11 +16,11 @@ const Table = () => (
 
     <tbody>
       <tr>
-        <td>000000000</td>
-        <td>Rua Tal</td>
-        <td>Bairro legal</td>
-        <td>Cidade Massa</td>
-        <td>SP</td>
+        <td>{code}</td>
+        <td>{address}</td>
+        <td>{district}</td>
+        <td>{city}</td>
+        <td>{state}</td>
       </tr>
     </tbody>
   </Container>
