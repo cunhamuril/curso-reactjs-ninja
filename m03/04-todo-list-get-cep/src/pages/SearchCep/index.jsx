@@ -22,7 +22,7 @@ class SearchCep extends PureComponent {
       { code: e.target.cep.value }
     );
 
-    this.props.dispatch(updateAddress(response));
+    this.props.updateAddress(response);
 
     this.setState({ isFetching: false });
   };
@@ -57,4 +57,11 @@ const mapStateToProps = (state) => ({
   address: state.address,
 });
 
-export default connect(mapStateToProps)(SearchCep);
+// const mapDispatchToProps = (dispatch) => ({
+//   updateAddress: (data) => dispatch(updateAddress(data)),
+// });
+
+// Quando a prop tiver o mesmo nome que o actionCreator, pode passar assim:
+const mapDispatchToProps = { updateAddress };
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchCep);
