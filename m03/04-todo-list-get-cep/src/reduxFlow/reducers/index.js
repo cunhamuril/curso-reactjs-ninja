@@ -1,5 +1,6 @@
 // import { combineReducers } from "redux";
 
+import address from "./address";
 import todos from "./todos";
 import visibilityFilter from "./visibilityFilter";
 
@@ -14,4 +15,4 @@ const combineReducers = (reducers) => (state = {}, action) => {
   }, {});
 };
 
-export default combineReducers({ todos, visibilityFilter });
+export default combineReducers({ address, todos, visibilityFilter });

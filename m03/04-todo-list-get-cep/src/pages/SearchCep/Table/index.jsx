@@ -2,7 +2,7 @@ import React from "react";
 
 import { Container } from "./styles";
 
-const Table = ({ address, city, code, district, state, status }) => (
+const Table = ({ address, city, code, district, state }) => (
   <Container>
     <thead>
       <tr>
@@ -17,8 +17,8 @@ const Table = ({ address, city, code, district, state, status }) => (
     <tbody>
       <tr>
         <td>{code}</td>
-        <td>{address}</td>
-        <td>{district}</td>
+        <td>{address || "Sem endereço"}</td>
+        <td>{district || "Sem bairro"}</td>
         <td>{city}</td>
         <td>{state}</td>
       </tr>

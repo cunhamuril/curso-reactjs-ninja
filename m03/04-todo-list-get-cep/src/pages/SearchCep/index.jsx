@@ -1,5 +1,8 @@
 import React, { PureComponent } from "react";
 import ajax from "@fdaciuk/ajax";
+import { connect } from "react-redux";
+
+import { updateAddress } from "../../reduxFlow/reducers/address/actionCreators";
 
 import Form from "../../components/Form";
 import Table from "./Table";
@@ -7,16 +10,7 @@ import Table from "./Table";
 import { Message } from "./styles";
 
 class SearchCep extends PureComponent {
-  state = {
-    address: "",
-    city: "",
-    code: "",
-    district: "",
-    state: "",
-    ok: null,
-    message: "Busque por algum CEP",
-    isFetching: false,
-  };
+  state = { isFetching: false };
 
   handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,9 +22,9 @@ class SearchCep extends PureComponent {
       { code: e.target.cep.value }
     );
 
-    console.log(response);
+    this.props.dispatch(updateAddress(response));
 
-    this.setState({ ...response, isFetching: false });
+    this.setState({ isFetching: false });
   };
 
   render() {
@@ -47,11 +41,11 @@ class SearchCep extends PureComponent {
           <Message>
             <h5>Buscando...</h5>
           </Message>
-        ) : this.state.ok ? (
-          <Table {...this.state} />
+        ) : this.props.address.ok ? (
+          <Table {...this.props.address} />
         ) : (
           <Message>
-            <h5>{this.state.message}</h5>
+            <h5>{this.props.address.message}</h5>
           </Message>
         )}
       </>
@@ -59,4 +53,8 @@ class SearchCep extends PureComponent {
   }
 }
 
-export default SearchCep;
+const mapStateToProps = (state) => ({
+  address: state.address,
+});
+
+export default connect(mapStateToProps)(SearchCep);
