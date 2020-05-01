@@ -1,11 +1,11 @@
 import address from "./index";
-import { UPDATE_ADDRESS } from "./actions";
+import { SUCCESS } from "./actions";
 
 it("address should be a function", () => {
   expect(typeof address).toBe("function");
 });
 
-it("should action UPDATE_ADDRESS update address", () => {
+it("should action SUCCESS update address", () => {
   const state = {
     address: "",
     city: "",
@@ -14,10 +14,11 @@ it("should action UPDATE_ADDRESS update address", () => {
     state: "",
     ok: null,
     message: "Busque por algum CEP",
+    isFetching: true,
   };
 
   const action = {
-    type: UPDATE_ADDRESS,
+    type: SUCCESS,
     payload: {
       address: "Avenida Presidente Kennedy - de 1632",
       city: "Curitiba",
@@ -26,6 +27,7 @@ it("should action UPDATE_ADDRESS update address", () => {
       state: "PR",
       ok: true,
       message: "Busque por algum CEP",
+      isFetching: true,
     },
   };
 
@@ -37,6 +39,7 @@ it("should action UPDATE_ADDRESS update address", () => {
     state: "PR",
     ok: true,
     message: "Busque por algum CEP",
+    isFetching: false,
   };
 
   expect(address(state, action)).toEqual(expected);
