@@ -2,14 +2,18 @@ import React from "react";
 import "normalize.css";
 import "milligram";
 
-import "./App.css";
+import { Container, Header, Main, Footer } from "./styles";
 
-function App() {
-  return (
-    <div className="App">
-      <h1>My App</h1>
-    </div>
-  );
-}
+const App = () => (
+  <Container>
+    <Header>
+      <h1>ReactFlix</h1>
+    </Header>
+
+    <Main>Conteúdo</Main>
+
+    <Footer>&copy; 2020</Footer>
+  </Container>
+);
 
 export default App;

@@ -6,11 +6,14 @@ import App from "./App";
 
 import configureStore from "./reduxFlow/configureStore";
 
+import GlobalStyles from "./theme/global";
+
 const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      <GlobalStyles />
       <App />
     </Provider>
   </React.StrictMode>,
