@@ -4,6 +4,7 @@ App based on Netflix to examplify the use of Redux
 
 # 📚 Used Libs
 
+- [Iconmonstr](https://iconmonstr.com/)
 - [Milligram](https://milligram.io/)
 - [Normalize.css](https://necolas.github.io/normalize.css/)
 - [React Redux](https://react-redux.js.org/)
