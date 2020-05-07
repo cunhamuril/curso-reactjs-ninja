@@ -2,17 +2,9 @@ import React from "react";
 import "normalize.css";
 import "milligram";
 
-import {
-  Container,
-  Header,
-  Main,
-  Footer,
-  VideosList,
-  Video,
-  VideoThumb,
-  VideoTitle,
-  StyledPlay,
-} from "./styles";
+import VideosList from "./components/VideosList";
+
+import { Container, Header, Main, Footer } from "./styles";
 
 const App = () => (
   <Container>
@@ -21,17 +13,7 @@ const App = () => (
     </Header>
 
     <Main>
-      <VideosList>
-        {/* Array.from({ length: 10 }): Create an array with length of 10 */}
-        {Array.from({ length: 10 }).map((item, index) => (
-          <Video key={index}>
-            <VideoThumb>
-              <StyledPlay />
-            </VideoThumb>
-            <VideoTitle>Título do Vídeo</VideoTitle>
-          </Video>
-        ))}
-      </VideosList>
+      <VideosList />
     </Main>
 
     <Footer>&copy; 2020</Footer>
