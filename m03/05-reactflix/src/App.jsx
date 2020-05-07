@@ -2,6 +2,7 @@ import React from "react";
 import "normalize.css";
 import "milligram";
 
+import VideoSingle from "./components/VideoSingle";
 import VideosList from "./components/VideosList";
 
 import { Container, Header, Main, Footer } from "./styles";
@@ -13,6 +14,7 @@ const App = () => (
     </Header>
 
     <Main>
+      <VideoSingle />
       <VideosList />
     </Main>
 
