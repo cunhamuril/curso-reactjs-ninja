@@ -16,25 +16,34 @@ const db = firebase.database();
 const videos = db.ref("videos");
 
 /**
+ * Adicionar dados
+ */
+// CUIDADO! set pode sobscrever informações
+videos.push().set({
+  id: "rp34FE01Q3M",
+  title: "JavaScript Secrets",
+});
+
+/**
  * Faz leitura toda vez que os dados forem modificados
  */
-// videos.on(
-//   "value",
-//   (snapshot) => {
-//     console.log("snapshot:", snapshot.val());
-//   },
-//   (error) => {
-//     console.error("error:", error);
-//   }
-// );
+videos.on(
+  "value",
+  (snapshot) => {
+    console.log("snapshot:", snapshot.val());
+  },
+  (error) => {
+    console.error("error:", error);
+  }
+);
 
 /**
  * Faz leitura apenas uma vez
  */
-videos
-  .once("value")
-  .then((snapshot) => console.log("snapshot:", snapshot.val()))
-  .catch((err) => console.error(err));
+// videos
+//   .once("value")
+//   .then((snapshot) => console.log("snapshot:", snapshot.val()))
+//   .catch((err) => console.error(err));
 
 ReactDOM.render(
   <React.StrictMode>
