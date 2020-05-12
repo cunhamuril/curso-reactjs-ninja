@@ -51,6 +51,11 @@ videos.on(
 //   title: "JavaScript Secrets 3",
 // });
 
+/**
+ * Remover dados
+ */
+// videos.child("-M75UhhDJmei7YwayXGA").remove();
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
