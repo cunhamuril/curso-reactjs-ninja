@@ -18,15 +18,16 @@ const videos = db.ref("videos");
 /**
  * Adicionar dados
  */
-// CUIDADO! set pode sobscrever informações
-videos.push().set({
-  id: "rp34FE01Q3M",
-  title: "JavaScript Secrets",
-});
+// CUIDADO! set pode ser destrutivo, pois sobscreve informações
+// videos.push().set({
+//   id: "rp34FE01Q3M",
+//   title: "JavaScript Secrets",
+// });
 
 /**
- * Faz leitura toda vez que os dados forem modificados
+ * Listar dados
  */
+// Faz leitura toda vez que os dados forem modificados
 videos.on(
   "value",
   (snapshot) => {
@@ -37,13 +38,18 @@ videos.on(
   }
 );
 
-/**
- * Faz leitura apenas uma vez
- */
+// Faz leitura apenas uma vez
 // videos
 //   .once("value")
 //   .then((snapshot) => console.log("snapshot:", snapshot.val()))
 //   .catch((err) => console.error(err));
+
+/**
+ * Editar dados
+ */
+// videos.child("-M75UNvpcdbKZP_zPb7Z").update({
+//   title: "JavaScript Secrets 3",
+// });
 
 ReactDOM.render(
   <React.StrictMode>
