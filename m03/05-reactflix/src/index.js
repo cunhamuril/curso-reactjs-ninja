@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 
 import App from "./App";
 
-import firebase from "./services/firebase";
+import { db } from "./services/firebase";
 
 import configureStore from "./reduxFlow/configureStore";
 
@@ -12,7 +12,6 @@ import GlobalStyles from "./theme/global";
 
 const store = configureStore();
 
-const db = firebase.database();
 const videos = db.ref("videos");
 
 /**
