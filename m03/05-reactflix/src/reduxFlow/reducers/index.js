@@ -1,4 +1,4 @@
 import { combineReducers } from "redux";
+import videos from "./videos";
 
-// export default combineReducers({ address, todos, visibilityFilter });
-export default combineReducers({});
+export default combineReducers({ videos });

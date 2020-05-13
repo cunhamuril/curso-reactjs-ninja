@@ -1,9 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import { Form } from "./styles";
 
-const RegisterVideo = () => (
-  <Form>
+const RegisterVideo = ({ onSubmit }) => (
+  <Form onSubmit={onSubmit}>
     <h2>Cadastrar Vídeo</h2>
 
     <label htmlFor="id">ID do vídeo</label>
@@ -16,4 +17,18 @@ const RegisterVideo = () => (
   </Form>
 );
 
-export default RegisterVideo;
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit: (e) => {
+    e.preventDefault();
+
+    dispatch({
+      type: "videos:ADD_VIDEO",
+      payload: {
+        id: "rp34FE01Q3M",
+        title: "BOM DIA",
+      },
+    });
+  },
+});
+
+export default connect(null, mapDispatchToProps)(RegisterVideo);
