@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import { addVideo } from "../../reduxFlow/reducers/videos/actionCreators";
+
 import { Form } from "./styles";
 
 const RegisterVideo = ({ onSubmit }) => (
@@ -20,14 +22,12 @@ const RegisterVideo = ({ onSubmit }) => (
 const mapDispatchToProps = (dispatch) => ({
   onSubmit: (e) => {
     e.preventDefault();
-
-    dispatch({
-      type: "videos:ADD_VIDEO",
-      payload: {
+    dispatch(
+      addVideo({
         id: "rp34FE01Q3M",
         title: "BOM DIA",
-      },
-    });
+      })
+    );
   },
 });
 
