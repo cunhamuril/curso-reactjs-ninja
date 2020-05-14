@@ -1,9 +1,8 @@
-import ui from ".";
 import deepFreeze from "deep-freeze";
 
-import { OPEN_REGISTER_VIDEO, CLOSE_REGISTER_VIDEO } from "./actions";
+import ui, { initialState } from ".";
 
-import { initialState } from ".";
+import { OPEN_REGISTER_VIDEO, CLOSE_REGISTER_VIDEO } from "./actions";
 
 it("should be a function", () => {
   expect(typeof ui).toBe("function");

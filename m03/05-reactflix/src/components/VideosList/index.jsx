@@ -1,19 +1,24 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import { Container, Video, VideoThumb, VideoTitle, PlayStyled } from "./styles";
 
-const VideosList = () => (
+const VideosList = ({ videos }) => (
   <Container>
-    {/* Array.from({ length: 10 }): Create an array with length of 10 */}
-    {Array.from({ length: 10 }).map((item, index) => (
-      <Video key={index}>
+    {/* Como não é um Array, precisa usar Object.keys passando o ID do vídeo, porque esta função só retorna as keys */}
+    {Object.keys(videos).map((id) => (
+      <Video key={id}>
         <VideoThumb>
           <PlayStyled />
         </VideoThumb>
-        <VideoTitle>Título do Vídeo</VideoTitle>
+        <VideoTitle>{videos[id].title}</VideoTitle>
       </Video>
     ))}
   </Container>
 );
 
-export default VideosList;
+const mapStateToProps = (state) => ({
+  videos: state.videos,
+});
+
+export default connect(mapStateToProps)(VideosList);

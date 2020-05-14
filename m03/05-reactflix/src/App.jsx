@@ -1,7 +1,9 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import "normalize.css";
 import "milligram";
+
+import { fetchVideos } from "reducers/videos/actionCreators";
 
 import RegisterVideo from "~/components/RegisterVideo";
 import VideoSingle from "~/components/VideoSingle";
@@ -11,22 +13,40 @@ import Footer from "~/components/Footer";
 
 import { Container, Main } from "~/styles";
 
-const App = ({ isRegisterVideoFormOpened }) => (
-  <Container>
-    <Header />
+class App extends PureComponent {
+  componentDidMount() {
+    this.props.fetchVideos();
+  }
 
-    <Main>
-      {isRegisterVideoFormOpened && <RegisterVideo />}
-      <VideoSingle />
-      <VideosList />
-    </Main>
+  render() {
+    const { isRegisterVideoFormOpened } = this.props;
 
-    <Footer />
-  </Container>
-);
+    return (
+      <Container>
+        <Header />
+
+        <Main>
+          {isRegisterVideoFormOpened && <RegisterVideo />}
+          <VideoSingle />
+          <VideosList />
+        </Main>
+
+        <Footer />
+      </Container>
+    );
+  }
+}
 
 const mapStateToProps = (state) => ({
   isRegisterVideoFormOpened: state.ui.isRegisterVideoFormOpened,
 });
 
-export default connect(mapStateToProps)(App);
+// Ao invés de fazer assim, como o nome da chave é o mesmo da action
+// const mapDispatchToProps = (dispatch) => ({
+//   fetchVideos: () => dispatch(fetchVideos()),
+// });
+
+// Pode fazer assim:
+const mapDispatchToProps = { fetchVideos };
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
