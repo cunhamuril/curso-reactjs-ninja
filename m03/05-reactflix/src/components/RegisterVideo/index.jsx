@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { addVideo } from "../../reduxFlow/reducers/videos/actionCreators";
+import { registerVideo } from "../../reduxFlow/reducers/videos/actionCreators";
 
 import { Form } from "./styles";
 
@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => ({
       title: { value: title },
     } = e.target;
 
-    dispatch(addVideo({ id, title }));
+    dispatch(registerVideo({ id, title }));
   },
 });
 
