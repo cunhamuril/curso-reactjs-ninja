@@ -6,12 +6,20 @@ import RegisterVideo from "./components/RegisterVideo";
 import VideoSingle from "./components/VideoSingle";
 import VideosList from "./components/VideosList";
 
-import { Container, Header, Main, Footer } from "./styles";
+import {
+  Container,
+  Header,
+  HeaderTitle,
+  RegisterButton,
+  Main,
+  Footer,
+} from "./styles";
 
 const App = () => (
   <Container>
     <Header>
-      <h1>ReactFlix</h1>
+      <HeaderTitle>ReactFlix</HeaderTitle>
+      <RegisterButton>Cadastrar Vídeo</RegisterButton>
     </Header>
 
     <Main>

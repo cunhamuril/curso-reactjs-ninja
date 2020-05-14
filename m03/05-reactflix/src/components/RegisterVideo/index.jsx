@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { registerVideo } from "../../reduxFlow/reducers/videos/actionCreators";
 
-import { Form } from "./styles";
+import { Form, ButtonClose } from "./styles";
 
 const RegisterVideo = ({ onSubmit }) => (
   <Form onSubmit={onSubmit}>
@@ -16,6 +16,7 @@ const RegisterVideo = ({ onSubmit }) => (
     <input type="text" id="title" name="title" />
 
     <button type="submit">Cadastrar</button>
+    <ButtonClose type="button">&times;</ButtonClose>
   </Form>
 );
 
