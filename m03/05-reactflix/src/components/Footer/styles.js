@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { footerHeight } from "../../utils/constants";
+import { footerHeight } from "~/utils/constants";
 
 export const Container = styled.footer`
   display: flex;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { headerHeight, footerHeight } from "./utils/constants";
+import { headerHeight, footerHeight } from "~/utils/constants";
 
 export const Container = styled.div`
   height: 100%;

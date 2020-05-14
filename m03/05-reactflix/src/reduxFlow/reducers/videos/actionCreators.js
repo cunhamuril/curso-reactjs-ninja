@@ -1,6 +1,6 @@
 import { ADD_VIDEO } from "./actions";
 
-import { db } from "../../../services/firebase";
+import { db } from "~/services/firebase";
 
 // Middleware ou thunk
 export const registerVideo = ({ id, title }) => async (dispatch) => {

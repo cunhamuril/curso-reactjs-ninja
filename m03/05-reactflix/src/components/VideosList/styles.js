@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Play from "../Play";
+import Play from "~/components/Play";
 
 export const PlayStyled = styled(Play)`
   width: 50px;

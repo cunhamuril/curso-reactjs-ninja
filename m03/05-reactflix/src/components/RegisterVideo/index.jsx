@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { registerVideo } from "../../reduxFlow/reducers/videos/actionCreators";
+import { registerVideo } from "reducers/videos/actionCreators";
 
 import { Form, ButtonClose } from "./styles";
 

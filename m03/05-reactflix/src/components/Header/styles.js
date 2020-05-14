@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { headerHeight } from "../../utils/constants";
+import { headerHeight } from "~/utils/constants";
 
 export const Container = styled.header`
   display: flex;

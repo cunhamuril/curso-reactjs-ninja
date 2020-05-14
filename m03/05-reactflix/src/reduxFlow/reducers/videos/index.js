@@ -1,4 +1,4 @@
-import createReducer from "../createReducer";
+import createReducer from "reducers/createReducer";
 
 import { ADD_VIDEO } from "./actions";
 
