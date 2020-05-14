@@ -20,8 +20,11 @@ const RegisterVideo = ({ onSubmit }) => (
 );
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit: (e) => {
+  onSubmit: async (e) => {
     e.preventDefault();
+
+    // se não for declarado isso, na hora de dar o reset, vai acusar erro de e = null
+    e.persist();
 
     // Destructuring de forma mais "profunda"
     const {
@@ -29,7 +32,12 @@ const mapDispatchToProps = (dispatch) => ({
       title: { value: title },
     } = e.target;
 
-    dispatch(registerVideo({ id, title }));
+    await dispatch(registerVideo({ id, title }));
+
+    e.target.reset();
+
+    // [0]: focar no primeiro item do form
+    e.target[0].focus();
   },
 });
 

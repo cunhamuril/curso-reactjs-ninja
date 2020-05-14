@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 
 import App from "./App";
 
-import { db } from "./services/firebase";
+// import { db } from "./services/firebase";
 
 import configureStore from "./reduxFlow/configureStore";
 
@@ -12,7 +12,7 @@ import GlobalStyles from "./theme/global";
 
 const store = configureStore();
 
-const videos = db.ref("videos");
+// const videos = db.ref("videos");
 
 /**
  * Adicionar dados
@@ -27,15 +27,15 @@ const videos = db.ref("videos");
  * Listar dados
  */
 // Faz leitura toda vez que os dados forem modificados
-videos.on(
-  "value",
-  (snapshot) => {
-    console.log("snapshot:", snapshot.val());
-  },
-  (error) => {
-    console.error("error:", error);
-  }
-);
+// videos.on(
+//   "value",
+//   (snapshot) => {
+//     console.log("snapshot:", snapshot.val());
+//   },
+//   (error) => {
+//     console.error("error:", error);
+//   }
+// );
 
 // Faz leitura apenas uma vez
 // videos
