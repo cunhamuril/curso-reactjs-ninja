@@ -22,12 +22,14 @@ const RegisterVideo = ({ onSubmit }) => (
 const mapDispatchToProps = (dispatch) => ({
   onSubmit: (e) => {
     e.preventDefault();
-    dispatch(
-      addVideo({
-        id: "rp34FE01Q3M",
-        title: "BOM DIA",
-      })
-    );
+
+    // Destructuring de forma mais "profunda"
+    const {
+      id: { value: id },
+      title: { value: title },
+    } = e.target;
+
+    dispatch(addVideo({ id, title }));
   },
 });
 
