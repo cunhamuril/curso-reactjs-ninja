@@ -2,11 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { registerVideo } from "reducers/videos/actionCreators";
+import { closeRegisterVideo } from "reducers/ui/actionCreators";
 
 import { Form, ButtonClose } from "./styles";
 
-const RegisterVideo = ({ onSubmit }) => (
-  <Form onSubmit={onSubmit}>
+const RegisterVideo = ({ handleSubmit, handleCloseRegisterVideo }) => (
+  <Form onSubmit={handleSubmit}>
     <h2>Cadastrar Vídeo</h2>
 
     <label htmlFor="id">ID do vídeo</label>
@@ -16,12 +17,14 @@ const RegisterVideo = ({ onSubmit }) => (
     <input type="text" id="title" name="title" />
 
     <button type="submit">Cadastrar</button>
-    <ButtonClose type="button">&times;</ButtonClose>
+    <ButtonClose type="button" onClick={handleCloseRegisterVideo}>
+      &times;
+    </ButtonClose>
   </Form>
 );
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit: async (e) => {
+  handleSubmit: async (e) => {
     e.preventDefault();
 
     // se não for declarado isso, na hora de dar o reset, vai acusar erro de e = null
@@ -40,6 +43,8 @@ const mapDispatchToProps = (dispatch) => ({
     // [0]: focar no primeiro item do form
     e.target[0].focus();
   },
+
+  handleCloseRegisterVideo: () => dispatch(closeRegisterVideo()),
 });
 
 export default connect(null, mapDispatchToProps)(RegisterVideo);

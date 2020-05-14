@@ -1,12 +1,21 @@
 import React from "react";
+import { connect } from "react-redux";
+
+import { openRegisterVideo } from "reducers/ui/actionCreators";
 
 import { Container, HeaderTitle, RegisterButton } from "./styles";
 
-const Header = () => (
+const Header = ({ handleOpenRegisterVideo }) => (
   <Container>
     <HeaderTitle>ReactFlix</HeaderTitle>
-    <RegisterButton>Cadastrar Vídeo</RegisterButton>
+    <RegisterButton onClick={handleOpenRegisterVideo}>
+      Cadastrar Vídeo
+    </RegisterButton>
   </Container>
 );
 
-export default Header;
+const mapDispatchToProps = (dispatch) => ({
+  handleOpenRegisterVideo: () => dispatch(openRegisterVideo()),
+});
+
+export default connect(null, mapDispatchToProps)(Header);
