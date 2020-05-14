@@ -41,3 +41,7 @@ export const VideoThumb = styled.div`
 export const VideoTitle = styled.h2`
   font-size: 18px;
 `;
+
+export const VideoLink = styled.a`
+  color: inherit;
+`;
