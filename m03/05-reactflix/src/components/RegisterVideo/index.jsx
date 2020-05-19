@@ -11,10 +11,10 @@ const RegisterVideo = ({ handleSubmit, handleCloseRegisterVideo }) => (
     <h2>Cadastrar Vídeo</h2>
 
     <label htmlFor="id">ID do vídeo</label>
-    <input type="text" id="id" name="id" />
+    <input type="text" id="id" name="id" autoComplete="off" required />
 
     <label htmlFor="title">Título do vídeo</label>
-    <input type="text" id="title" name="title" />
+    <input type="text" id="title" name="title" autoComplete="off" required />
 
     <button type="submit">Cadastrar</button>
     <ButtonClose type="button" onClick={handleCloseRegisterVideo}>

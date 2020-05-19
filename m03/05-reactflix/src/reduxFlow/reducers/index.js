@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import videos from "./videos";
 import ui from "./ui";
+import videoSingle from "./videoSingle";
 
-export default combineReducers({ videos, ui });
+export default combineReducers({ videos, ui, videoSingle });

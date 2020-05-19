@@ -47,7 +47,7 @@ it("should return the latest state when action is unkown", () => {
   expect(videos(state, action)).toEqual(expected);
 });
 
-it("should return the initialState when before is undefined", () => {
+it("should return the initialState when state is undefined", () => {
   const state = undefined;
   const action = deepFreeze({});
   const expected = initialState;

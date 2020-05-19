@@ -2,18 +2,18 @@ import React from "react";
 
 import { Container, Iframe, Title } from "./styles";
 
-const VideoSingle = () => (
+const VideoSingle = ({ id, title }) => (
   <Container>
     <Iframe
       title="video"
       width="560"
       height="550"
-      src="https://www.youtube.com/embed/rp34FE01Q3M"
+      src={`https://www.youtube.com/embed/${id}`}
       frameborder="0"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
     />
-    <Title>Título do Vídeo</Title>
+    <Title>{title}</Title>
   </Container>
 );
 

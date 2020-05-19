@@ -19,7 +19,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const { isRegisterVideoFormOpened } = this.props;
+    const { isRegisterVideoFormOpened, videoSingleId, videos } = this.props;
 
     return (
       <Container>
@@ -27,7 +27,12 @@ class App extends PureComponent {
 
         <Main>
           {isRegisterVideoFormOpened && <RegisterVideo />}
-          <VideoSingle />
+          {videoSingleId && (
+            <VideoSingle
+              id={videoSingleId}
+              title={videos[videoSingleId].title}
+            />
+          )}
           <VideosList />
         </Main>
 
@@ -39,6 +44,8 @@ class App extends PureComponent {
 
 const mapStateToProps = (state) => ({
   isRegisterVideoFormOpened: state.ui.isRegisterVideoFormOpened,
+  videoSingleId: state.videoSingle,
+  videos: state.videos,
 });
 
 // Ao invés de fazer assim, como o nome da chave é o mesmo da action
