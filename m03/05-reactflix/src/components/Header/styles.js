@@ -15,6 +15,8 @@ export const Container = styled.header`
 
 export const HeaderTitle = styled.h1`
   margin-bottom: 0;
+
+  color: #fff;
 `;
 
 export const RegisterButton = styled.button`

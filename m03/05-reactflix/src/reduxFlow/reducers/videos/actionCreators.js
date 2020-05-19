@@ -17,9 +17,16 @@ export const addVideo = ({ id, title }) => ({
 
 // Middleware utilizando thunk
 export const fetchVideos = () => (dispatch) => {
-  db.ref("videos").on("value", (snapshot) => {
-    snapshot.forEach((child) => {
+  // Forma ordenada
+  db.ref("videos")
+    .orderByChild("title")
+    .on("child_added", (child) => {
       dispatch(addVideo(child.val()));
     });
-  });
+
+  // db.ref("videos").on("value", (snapshot) => {
+  //   snapshot.forEach((child) => {
+  //     dispatch(addVideo(child.val()));
+  //   });
+  // });
 };
