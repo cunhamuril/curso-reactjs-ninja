@@ -12,19 +12,43 @@ function App() {
           <Link to="/sobre">Sobre</Link>
         </li>
         <li>
-          <Link to="/contato">Contato</Link>
+          <Link to="/blog">blog</Link>
         </li>
       </ul>
 
       <Route path="/" exact component={Home} />
       <Route path="/sobre" component={Sobre} />
-      <Route path="/contato" component={Contato} />
+      <Route path="/blog" component={Blog} />
     </div>
   );
 }
 
 const Home = () => <h1>Home</h1>;
+
 const Sobre = () => <h1>Sobre</h1>;
-const Contato = () => <h1>Contato</h1>;
+
+const Blog = () => (
+  <>
+    <h1>Blog</h1>
+
+    <small>
+      <ul>
+        <li>
+          <Link to="/blog/post-1">Post 1</Link>
+        </li>
+        <li>
+          <Link to="/blog/post-2">Post 2</Link>
+        </li>
+      </ul>
+    </small>
+
+    <Route path="/blog/:post" component={Post} />
+    <Route path="/blog" exact component={NoPosts} />
+  </>
+);
+
+const Post = ({ match }) => <h2>{match.params.post}</h2>;
+
+const NoPosts = () => <h2>Selecione um post!</h2>;
 
 export default App;
