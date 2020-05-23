@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
@@ -16,12 +16,17 @@ function App() {
         </li>
       </ul>
 
-      <Route path="/" exact component={Home} />
-      <Route path="/sobre" component={Sobre} />
-      <Route path="/blog" component={Blog} />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/sobre" component={Sobre} />
+        <Route path="/blog" component={Blog} />
+        <Route component={Error404} />
+      </Switch>
     </div>
   );
 }
+
+const Error404 = () => <h1>Página Não Encontrada</h1>;
 
 const Home = () => <h1>Home</h1>;
 
