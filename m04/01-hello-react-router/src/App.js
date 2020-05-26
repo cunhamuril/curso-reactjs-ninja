@@ -1,21 +1,38 @@
 import React from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import { NavLink, Route, Switch } from "react-router-dom";
+
+import "./App.css";
+
+const Link = (props) => (
+  /**
+   * activeClassName: nome da classe de link ativo. Default is 'active'
+   * activeStyle: estilo inline de link ativo
+   * exact: funciona igual o exact da routes. Só vai tornar ativa se renderizar exatamente esssa rota
+   */
+  <NavLink
+    activeClassName="active-link"
+    activeStyle={{ color: "red" }}
+    {...props}
+  />
+);
 
 function App() {
   return (
     <div className="App">
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/" exact>
+            Home
+          </Link>
         </li>
         <li>
           <Link to="/sobre">Sobre</Link>
         </li>
         <li>
-          <Link to="/blog">blog</Link>
+          <Link to="/contato">Contato</Link>
         </li>
         <li>
-          <Link to="/contato">Page</Link>
+          <Link to="/blog">Blog</Link>
         </li>
       </ul>
 
@@ -25,7 +42,7 @@ function App() {
           (sobre|contato): operador OR de RegEx
           Vai renderizar Sobre OR Contato
         */}
-        <Route exact path="/(sobre|contato)page" component={Page} />
+        <Route exact path="/(sobre|contato)" component={Page} />
         <Route path="/blog" component={Blog} />
         <Route component={Error404} />
       </Switch>
