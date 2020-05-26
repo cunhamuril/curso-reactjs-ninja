@@ -14,11 +14,18 @@ function App() {
         <li>
           <Link to="/blog">blog</Link>
         </li>
+        <li>
+          <Link to="/contato">Page</Link>
+        </li>
       </ul>
 
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/sobre" component={Sobre} />
+        {/*
+          (sobre|contato): operador OR de RegEx
+          Vai renderizar Sobre OR Contato
+        */}
+        <Route exact path="/(sobre|contato)page" component={Page} />
         <Route path="/blog" component={Blog} />
         <Route component={Error404} />
       </Switch>
@@ -30,7 +37,11 @@ const Error404 = () => <h1>Página Não Encontrada</h1>;
 
 const Home = () => <h1>Home</h1>;
 
-const Sobre = () => <h1>Sobre</h1>;
+const Page = ({ match }) => {
+  console.log(match);
+
+  return <h1>{match.url}</h1>;
+};
 
 const Blog = () => (
   <>
@@ -47,10 +58,19 @@ const Blog = () => (
       </ul>
     </small>
 
-    <Route path="/blog/:post" component={Post} />
-    <Route path="/blog" exact component={NoPosts} />
+    <Switch>
+      {/*
+        (post-[12]): RegEx
+        Só vai renderizar post-1 OR post-2
+      */}
+      <Route path="/blog/:post(post-[12])" component={Post} />
+      <Route path="/blog" exact component={NoPosts} />
+      <Route component={Post404} />
+    </Switch>
   </>
 );
+
+const Post404 = () => <h1>Esse post não existe</h1>;
 
 const Post = ({ match }) => <h2>{match.params.post}</h2>;
 
