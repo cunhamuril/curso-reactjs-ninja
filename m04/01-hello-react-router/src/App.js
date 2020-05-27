@@ -9,11 +9,29 @@ const Link = (props) => (
    * activeStyle: estilo inline de link ativo
    * exact: funciona igual o exact da routes. Só vai tornar ativa se renderizar exatamente esssa rota
    */
-  <NavLink
-    activeClassName="active-link"
-    activeStyle={{ color: "red" }}
-    {...props}
-  />
+  // <NavLink
+  //   activeClassName="active-link"
+  //   activeStyle={{ color: "red" }}
+  //   {...props}
+  // />
+
+  /**
+   * Demonstração de +/- como funciona o NavLink, utilizando prop Children do Route
+   */
+  <Route path={props.to} exact={props.exact}>
+    {({ match, history }) => (
+      <a
+        href={props.to}
+        style={match ? { color: "red" } : null}
+        onClick={(e) => {
+          e.preventDefault();
+          history.push(props.to);
+        }}
+      >
+        {props.children}
+      </a>
+    )}
+  </Route>
 );
 
 function App() {
@@ -46,6 +64,19 @@ function App() {
         <Route path="/blog" component={Blog} />
         <Route component={Error404} />
       </Switch>
+
+      {/**
+       * Prop Children: sempre vai aparecer na página, mas a prop Match só vai aparecer
+       * quando estiver de fato na página especificada.
+       */}
+      <Route path="/sobre">
+        {({ match }) => (
+          <pre>
+            {console.log("Estou na página sobre!", match)}
+            Estou na página sobre!
+          </pre>
+        )}
+      </Route>
     </div>
   );
 }
@@ -55,8 +86,6 @@ const Error404 = () => <h1>Página Não Encontrada</h1>;
 const Home = () => <h1>Home</h1>;
 
 const Page = ({ match }) => {
-  console.log(match);
-
   return <h1>{match.url}</h1>;
 };
 
