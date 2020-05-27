@@ -81,7 +81,11 @@ const Blog = () => (
         Só vai renderizar post-1 OR post-2
       */}
       <Route path="/blog/:post(post-[12])" component={Post} />
-      <Route path="/blog" exact component={NoPosts} />
+      <Route
+        path="/blog"
+        exact
+        render={(props) => <NoPosts numberOfPosts={2} {...props} />}
+      />
       <Route component={Post404} />
     </Switch>
   </>
@@ -91,6 +95,8 @@ const Post404 = () => <h1>Esse post não existe</h1>;
 
 const Post = ({ match }) => <h2>{match.params.post}</h2>;
 
-const NoPosts = () => <h2>Selecione um post!</h2>;
+const NoPosts = ({ numberOfPosts }) => (
+  <h2>Selecione um dos {numberOfPosts} posts!</h2>
+);
 
 export default App;
