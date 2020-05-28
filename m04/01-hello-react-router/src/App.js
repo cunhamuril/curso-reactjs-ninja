@@ -63,7 +63,6 @@ function App() {
         
           <Route exact path="/(sobre|contato)/(1|2)?" component={Page} />
         */}
-
         <Route exact path="/(sobre|contato)/:id?" component={Page} />
         <Route path="/blog" component={Blog} />
         <Route component={Error404} />
@@ -87,23 +86,26 @@ function App() {
 
 const Error404 = () => <h1>Página Não Encontrada</h1>;
 
-const Home = ({ match }) => (
+const Home = ({ match, location }) => (
   <div>
+    {console.log("Home location:", location)}
     {console.log("Home match:", match)}
     <h1>Home</h1>
   </div>
 );
 
-const Page = ({ match }) => (
+const Page = ({ match, location }) => (
   <div>
+    {console.log("Page location:", location)}
     {console.log("Page match:", match)}
     <h1>{match.url}</h1>
   </div>
 );
 
 let blogMatch = null;
-const Blog = ({ match }) => (
+const Blog = ({ match, location }) => (
   <>
+    {console.log("Blog location:", location)}
     {console.log("Blog match:", (blogMatch = match))}
     <h1>Blog</h1>
 
@@ -134,8 +136,9 @@ const Blog = ({ match }) => (
   </>
 );
 
-const Post404 = ({ match }) => (
+const Post404 = ({ match, location }) => (
   <div>
+    {console.log("Post404 location:", location)}
     {console.log(
       "Post404 match:",
       match,
@@ -146,15 +149,17 @@ const Post404 = ({ match }) => (
   </div>
 );
 
-const Post = ({ match }) => (
+const Post = ({ match, location }) => (
   <div>
+    {console.log("Post location:", location)}
     {console.log("Post match:", match)}
     <h2>{match.params.post}</h2>
   </div>
 );
 
-const NoPosts = ({ match, numberOfPosts }) => (
+const NoPosts = ({ match, location, numberOfPosts }) => (
   <div>
+    {console.log("NoPosts location:", location)}
     {console.log("NoPosts match:", match)}
     <h2>Selecione um dos {numberOfPosts} posts!</h2>
   </div>
