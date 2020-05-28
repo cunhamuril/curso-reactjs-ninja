@@ -80,7 +80,7 @@ function App() {
       <Route path="/sobre">
         {({ match }) => (
           <pre>
-            {console.log("Estou na página sobre!", match)}
+            {/* console.log("Estou na página sobre!", match) */}
             Estou na página sobre!
           </pre>
         )}
@@ -98,7 +98,27 @@ const Error404 = () => <h1>Página Não Encontrada</h1>;
 const Home = ({ match, location }) => (
   <div>
     {console.log("Home location:", location)}
-    {console.log("Home match:", match)}
+
+    {/**
+     * Pegar o valor da Query String da URL e transformar em um objeto
+     * exemplo da Query string: ?name=Murilo&id=1&city=Guarei
+     *
+     * replace: substituir ? por nada
+     * split: dividir pelos & e colocar em um Array
+     * reduce: pegar a chave e valor dos itens e reduzir tudo em um objeto
+     */}
+    {console.log(
+      "Location search:",
+      location.search
+        .replace("?", "")
+        .split("&")
+        .reduce((acc, item) => {
+          const [key, value] = item.split("=");
+          acc[key] = value;
+          return acc;
+        }, {})
+    )}
+    {/* console.log("Home match:", match) */}
     <h1>Home</h1>
   </div>
 );
@@ -106,7 +126,7 @@ const Home = ({ match, location }) => (
 const Page = ({ match, location }) => (
   <div>
     {console.log("Page location:", location)}
-    {console.log("Page match:", match)}
+    {/* console.log("Page match:", match) */}
     <h1>{match.url}</h1>
   </div>
 );
@@ -161,7 +181,7 @@ const Post404 = ({ match, location }) => (
 const Post = ({ match, location }) => (
   <div>
     {console.log("Post location:", location)}
-    {console.log("Post match:", match)}
+    {/* console.log("Post match:", match) */}
     <h2>{match.params.post}</h2>
   </div>
 );
@@ -169,7 +189,7 @@ const Post = ({ match, location }) => (
 const NoPosts = ({ match, location, numberOfPosts }) => (
   <div>
     {console.log("NoPosts location:", location)}
-    {console.log("NoPosts match:", match)}
+    {/* console.log("NoPosts match:", match) */}
     <h2>Selecione um dos {numberOfPosts} posts!</h2>
   </div>
 );
