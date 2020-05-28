@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import "./App.css";
 
@@ -58,9 +58,13 @@ function App() {
         <Route path="/" exact component={Home} />
         {/*
           (sobre|contato): operador OR de RegEx
+          (1|2)? : vai ter que ser um ou dois, e o simbolo de interrogação diz que é opcional
           Vai renderizar Sobre OR Contato
+        
+          <Route exact path="/(sobre|contato)/(1|2)?" component={Page} />
         */}
-        <Route exact path="/(sobre|contato)" component={Page} />
+
+        <Route exact path="/(sobre|contato)/:id?" component={Page} />
         <Route path="/blog" component={Blog} />
         <Route component={Error404} />
       </Switch>
@@ -83,14 +87,24 @@ function App() {
 
 const Error404 = () => <h1>Página Não Encontrada</h1>;
 
-const Home = () => <h1>Home</h1>;
+const Home = ({ match }) => (
+  <div>
+    {console.log("Home match:", match)}
+    <h1>Home</h1>
+  </div>
+);
 
-const Page = ({ match }) => {
-  return <h1>{match.url}</h1>;
-};
+const Page = ({ match }) => (
+  <div>
+    {console.log("Page match:", match)}
+    <h1>{match.url}</h1>
+  </div>
+);
 
-const Blog = () => (
+let blogMatch = null;
+const Blog = ({ match }) => (
   <>
+    {console.log("Blog match:", (blogMatch = match))}
     <h1>Blog</h1>
 
     <small>
@@ -120,12 +134,30 @@ const Blog = () => (
   </>
 );
 
-const Post404 = () => <h1>Esse post não existe</h1>;
+const Post404 = ({ match }) => (
+  <div>
+    {console.log(
+      "Post404 match:",
+      match,
+      "Post404 match é o mesmo do blog?",
+      match === blogMatch
+    )}
+    <h1>Esse post não existe</h1>
+  </div>
+);
 
-const Post = ({ match }) => <h2>{match.params.post}</h2>;
+const Post = ({ match }) => (
+  <div>
+    {console.log("Post match:", match)}
+    <h2>{match.params.post}</h2>
+  </div>
+);
 
-const NoPosts = ({ numberOfPosts }) => (
-  <h2>Selecione um dos {numberOfPosts} posts!</h2>
+const NoPosts = ({ match, numberOfPosts }) => (
+  <div>
+    {console.log("NoPosts match:", match)}
+    <h2>Selecione um dos {numberOfPosts} posts!</h2>
+  </div>
 );
 
 export default App;
