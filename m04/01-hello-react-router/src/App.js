@@ -39,7 +39,15 @@ function App() {
     <div className="App">
       <ul>
         <li>
-          <Link to="/" exact>
+          <Link
+            to={{
+              // Passando state por rota
+              pathname: "/",
+              state: { id: "home" },
+              search: "?name=Murilo",
+            }}
+            exact
+          >
             Home
           </Link>
         </li>
