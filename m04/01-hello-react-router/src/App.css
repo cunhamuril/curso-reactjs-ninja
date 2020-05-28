@@ -9,3 +9,7 @@ a {
 a.active-link {
   text-decoration: underline;
 }
+
+#informacoes-do-site {
+  margin: 1000px 0;
+}

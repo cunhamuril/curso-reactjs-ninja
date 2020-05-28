@@ -52,6 +52,11 @@ function App() {
         <li>
           <Link to="/blog">Blog</Link>
         </li>
+
+        {/* Exemplo de âncora com Hash. Vai ancorar no elemento que tem o id passado no href */}
+        <li>
+          <a href="#informacoes-do-site">Informações do Site</a>
+        </li>
       </ul>
 
       <Switch>
@@ -80,6 +85,10 @@ function App() {
           </pre>
         )}
       </Route>
+
+      <div id="informacoes-do-site">
+        <h2>Informações do site</h2>
+      </div>
     </div>
   );
 }
