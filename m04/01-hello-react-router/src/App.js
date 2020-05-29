@@ -27,7 +27,10 @@ const Link = (props) => (
           e.preventDefault();
 
           // Segundo argumento (opcional) é o state que pode ser passado
-          history.push(props.to, { link: "Link" });
+          // history.push(props.to, { link: "Link" });
+
+          // Replace: Parecido com o Push, porém não vai adicionar a página anterior na pilha do histórico do navegador
+          history.replace(props.to, { link: "Link" });
         }}
       >
         {props.children}
