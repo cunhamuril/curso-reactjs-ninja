@@ -103,9 +103,10 @@ function App() {
 
 const Error404 = () => <h1>Página Não Encontrada</h1>;
 
-const Home = ({ match, location }) => (
+const Home = ({ match, location, history }) => (
   <div>
-    {console.log("Home location:", location)}
+    {console.log("Home history:", history)}
+    {/* console.log("Home location:", location) */}
 
     {/**
      * Pegar o valor da Query String da URL e transformar em um objeto
@@ -131,19 +132,21 @@ const Home = ({ match, location }) => (
   </div>
 );
 
-const Page = ({ match, location }) => (
+const Page = ({ match, location, history }) => (
   <div>
-    {console.log("Page location:", location)}
+    {console.log("Page history", history)}
+    {/*console.log("Page location:", location)*/}
     {/* console.log("Page match:", match) */}
     <h1>{match.url}</h1>
   </div>
 );
 
-let blogMatch = null;
-const Blog = ({ match, location }) => (
+// let blogMatch = null;
+const Blog = ({ match, location, history }) => (
   <>
-    {console.log("Blog location:", location)}
-    {console.log("Blog match:", (blogMatch = match))}
+    {console.log("Blog history", history)}
+    {/*console.log("Blog location:", location)*/}
+    {/*console.log("Blog match:", (blogMatch = match))*/}
     <h1>Blog</h1>
 
     <small>
@@ -173,29 +176,32 @@ const Blog = ({ match, location }) => (
   </>
 );
 
-const Post404 = ({ match, location }) => (
+const Post404 = ({ match, location, history }) => (
   <div>
-    {console.log("Post404 location:", location)}
-    {console.log(
+    {console.log("Post404 history", history)}
+    {/*console.log("Post404 location:", location)*/}
+    {/*console.log(
       "Post404 match:",
       match,
       "Post404 match é o mesmo do blog?",
       match === blogMatch
-    )}
+    )*/}
     <h1>Esse post não existe</h1>
   </div>
 );
 
-const Post = ({ match, location }) => (
+const Post = ({ match, location, history }) => (
   <div>
-    {console.log("Post location:", location)}
+    {console.log("Post history", history)}
+    {/*console.log("Post location:", location)*/}
     {/* console.log("Post match:", match) */}
     <h2>{match.params.post}</h2>
   </div>
 );
 
-const NoPosts = ({ match, location, numberOfPosts }) => (
+const NoPosts = ({ match, location, history, numberOfPosts }) => (
   <div>
+    {console.log("NoPosts history", history)}
     {console.log("NoPosts location:", location)}
     {/* console.log("NoPosts match:", match) */}
     <h2>Selecione um dos {numberOfPosts} posts!</h2>
