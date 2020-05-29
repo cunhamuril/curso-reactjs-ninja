@@ -25,7 +25,9 @@ const Link = (props) => (
         style={match ? { color: "red" } : null}
         onClick={(e) => {
           e.preventDefault();
-          history.push(props.to);
+
+          // Segundo argumento (opcional) é o state que pode ser passado
+          history.push(props.to, { link: "Link" });
         }}
       >
         {props.children}
