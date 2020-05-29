@@ -27,10 +27,10 @@ const Link = (props) => (
           e.preventDefault();
 
           // Segundo argumento (opcional) é o state que pode ser passado
-          // history.push(props.to, { link: "Link" });
+          history.push(props.to, { link: "Link" });
 
           // Replace: Parecido com o Push, porém não vai adicionar a página anterior na pilha do histórico do navegador
-          history.replace(props.to, { link: "Link" });
+          // history.replace(props.to, { link: "Link" });
         }}
       >
         {props.children}
@@ -39,9 +39,33 @@ const Link = (props) => (
   </Route>
 );
 
-function App() {
+function App({ history }) {
   return (
     <div className="App">
+      <Route>
+        {({ history }) => (
+          <ul>
+            <li>
+              {/* goBack(): método do history que volta para página anterior, como o botão de voltar do navegador */}
+              <button onClick={() => history.goBack()}>{"<-"} Voltar</button>
+
+              {/* goForward(): contrário de goBack, ao invés de voltar pra página anterior, vai para página seguindo histórico */}
+              <button onClick={() => history.goForward()}>
+                Próxima Página {"->"}
+              </button>
+            </li>
+
+            <li>
+              {/* go(n): Manda para o número da página no histórico. Por exemplo: a página atual é 0, 1 é a próxima e -1 é a anterior */}
+              <button onClick={() => history.go(-1)}>{"<-"} Voltar</button>
+              <button onClick={() => history.go(1)}>
+                Próxima Página {"->"}
+              </button>
+            </li>
+          </ul>
+        )}
+      </Route>
+
       <ul>
         <li>
           <Link
