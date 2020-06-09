@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect, Prompt } from "react-router-dom";
 
 import "./App.css";
 
@@ -98,6 +98,9 @@ function App({ history }) {
         <li>
           <Link to="/voltar-para-home">Voltar para home</Link>
         </li>
+        <li>
+          <Link to="/cadastro">Cadastro</Link>
+        </li>
       </ul>
 
       <Switch>
@@ -114,6 +117,7 @@ function App({ history }) {
         */}
         <Route exact path="/(sobre|contato)/:id?" component={Page} />
         <Route path="/blog" component={Blog} />
+        <Route path="/cadastro" component={Register} />
         {/*<Route
           path="/voltar-para-home"
           render={() => <Redirect push to="/" />}
@@ -140,6 +144,11 @@ function App({ history }) {
     </div>
   );
 }
+
+/**
+ * Prompt: quanto when estiver true, vai segurar o usuário e abrir uma caixa de diálogo perguntando se quer mesmo sair da página
+ */
+const Register = () => <Prompt when={true} message="Navegação bloqueada" />;
 
 const Error404 = () => <h1>Página Não Encontrada</h1>;
 
