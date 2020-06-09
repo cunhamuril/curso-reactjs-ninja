@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, Redirect, Prompt } from "react-router-dom";
+import { Route, Switch, Redirect, Prompt, withRouter } from "react-router-dom";
 
 import "./App.css";
 
@@ -39,6 +39,31 @@ const Link = (props) => (
   </Route>
 );
 
+const ButtonBack_ = ({ history }) => (
+  // goBack(): método do history que volta para página anterior, como o botão de voltar do navegador
+  <button onClick={() => history.goBack()}>{"<-"} Voltar</button>
+);
+
+/**
+ * WithRouter é um High Order Component que funciona que nem connect do react-redux.
+ * Deve passar propriedades de rota mesmo se o arquivo não estiver dentro de rota
+ * como history, location etc
+ */
+const ButtonBack = withRouter(ButtonBack_);
+
+/**
+ * Quando precisar pegar o component puro sem o withRouter,
+ * é só passar o método WrappedComponent na chamada dele
+ */
+console.log("componente puro: ", ButtonBack.WrappedComponent);
+
+const ButtonForward_ = ({ history }) => (
+  // goForward(): contrário de goBack, ao invés de voltar pra página anterior, vai para página seguindo histórico
+  <button onClick={() => history.goForward()}>Próxima Página {"->"}</button>
+);
+
+const ButtonForward = withRouter(ButtonForward_);
+
 function App({ history }) {
   return (
     <div className="App">
@@ -46,13 +71,10 @@ function App({ history }) {
         {({ history }) => (
           <ul>
             <li>
-              {/* goBack(): método do history que volta para página anterior, como o botão de voltar do navegador */}
-              <button onClick={() => history.goBack()}>{"<-"} Voltar</button>
-
-              {/* goForward(): contrário de goBack, ao invés de voltar pra página anterior, vai para página seguindo histórico */}
-              <button onClick={() => history.goForward()}>
-                Próxima Página {"->"}
-              </button>
+              {/*<Route component={ButtonBack} />
+                <Route component={ButtonForward} /> */}
+              <ButtonBack />
+              <ButtonForward />
             </li>
 
             <li>
