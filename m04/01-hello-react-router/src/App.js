@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import "./App.css";
 
@@ -94,10 +94,17 @@ function App({ history }) {
         <li>
           <a href="#informacoes-do-site">Informações do Site</a>
         </li>
+
+        <li>
+          <Link to="/voltar-para-home">Voltar para home</Link>
+        </li>
       </ul>
 
       <Switch>
         <Route path="/" exact component={Home} />
+
+        <Redirect from="/voltar-para-home" to="/" />
+
         {/*
           (sobre|contato): operador OR de RegEx
           (1|2)? : vai ter que ser um ou dois, e o simbolo de interrogação diz que é opcional
@@ -107,6 +114,10 @@ function App({ history }) {
         */}
         <Route exact path="/(sobre|contato)/:id?" component={Page} />
         <Route path="/blog" component={Blog} />
+        {/*<Route
+          path="/voltar-para-home"
+          render={() => <Redirect push to="/" />}
+        />*/}
         <Route component={Error404} />
       </Switch>
 
