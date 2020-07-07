@@ -16,14 +16,6 @@ class ErrorBoundary extends PureComponent {
     console.log("info: ", info.componentStack);
   }
 
-  // render() {
-  //   if (this.state.hasError) {
-  //     return <h1>Deu erro!</h1>;
-  //   }
-
-  //   return this.props.children;
-  // }
-
   render() {
     return this.props.children(this.state.hasError);
   }

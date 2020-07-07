@@ -1,9 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import ErrorBoundary from "./components/ErrorBoundary";
+import ErrorBoundary from "./ErrorBoundary";
 
-import "./index.css";
 import App from "./App";
 
 import * as serviceWorker from "./serviceWorker";
