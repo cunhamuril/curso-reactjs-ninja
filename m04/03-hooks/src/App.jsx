@@ -18,8 +18,11 @@ class CounterClass extends React.PureComponent {
     this.updateDocumentTitle();
   }
 
-  componentDidUpdate() {
-    this.updateDocumentTitle();
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.counter !== this.state.counter) {
+      console.log("componentDidUpdate");
+      this.updateDocumentTitle();
+    }
   }
 
   updateDocumentTitle() {
@@ -65,8 +68,9 @@ function CounterFunction() {
   const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
+    console.log("useEffect");
     document.title = `CounterFunction: ${counter}`;
-  });
+  }, [counter]);
 
   return (
     <>
