@@ -11,24 +11,38 @@ const App = () => (
 class CounterClass extends React.PureComponent {
   state = {
     counter: 0,
+    toggle: false,
   };
 
   render() {
     return (
-      <Counter
-        title="Class"
-        counter={this.state.counter}
-        increment={() => {
-          this.setState((prevState) => ({
-            counter: prevState.counter + 1,
-          }));
-        }}
-        decrement={() => {
-          this.setState((prevState) => ({
-            counter: prevState.counter - 1,
-          }));
-        }}
-      />
+      <>
+        <Counter
+          title="Class"
+          counter={this.state.counter}
+          increment={() => {
+            this.setState((prevState) => ({
+              counter: prevState.counter + 1,
+            }));
+          }}
+          decrement={() => {
+            this.setState((prevState) => ({
+              counter: prevState.counter - 1,
+            }));
+          }}
+        />
+
+        {this.state.toggle && <h1>Visível!</h1>}
+        <button
+          onClick={() => {
+            this.setState((prevState) => ({
+              toggle: !prevState.toggle,
+            }));
+          }}
+        >
+          Toggle
+        </button>
+      </>
     );
   }
 }
@@ -36,14 +50,20 @@ class CounterClass extends React.PureComponent {
 // Componente de função
 function CounterFunction() {
   const [counter, setCounter] = useState(0);
+  const [toggle, setToggle] = useState(false);
 
   return (
-    <Counter
-      title="Function"
-      counter={counter}
-      increment={() => setCounter((prevState) => prevState + 1)}
-      decrement={() => setCounter((prevState) => prevState - 1)}
-    />
+    <>
+      <Counter
+        title="Function"
+        counter={counter}
+        increment={() => setCounter((prevState) => prevState + 1)}
+        decrement={() => setCounter((prevState) => prevState - 1)}
+      />
+
+      {toggle && <h1>Visível</h1>}
+      <button onClick={() => setToggle(!toggle)}>Toggle</button>
+    </>
   );
 }
 
