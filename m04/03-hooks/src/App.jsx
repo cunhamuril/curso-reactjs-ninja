@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const App = () => (
   <>
@@ -13,6 +13,18 @@ class CounterClass extends React.PureComponent {
     counter: 0,
     toggle: false,
   };
+
+  componentDidMount() {
+    this.updateDocumentTitle();
+  }
+
+  componentDidUpdate() {
+    this.updateDocumentTitle();
+  }
+
+  updateDocumentTitle() {
+    document.title = `CounterClass: ${this.state.counter}`;
+  }
 
   render() {
     return (
@@ -49,38 +61,24 @@ class CounterClass extends React.PureComponent {
 
 // Componente de função
 function CounterFunction() {
-  const [state, setState] = useState({
-    counter: 0,
-    toggle: false,
+  const [counter, setCounter] = useState(0);
+  const [toggle, setToggle] = useState(false);
+
+  useEffect(() => {
+    document.title = `CounterFunction: ${counter}`;
   });
 
   return (
     <>
       <Counter
         title="Function"
-        counter={state.counter}
-        increment={() =>
-          setState((prevState) => ({
-            ...prevState,
-            counter: prevState.counter + 1,
-          }))
-        }
-        decrement={() =>
-          setState((prevState) => ({
-            ...prevState,
-            counter: prevState.counter - 1,
-          }))
-        }
+        counter={counter}
+        increment={() => setCounter((prevState) => prevState + 1)}
+        decrement={() => setCounter((prevState) => prevState - 1)}
       />
 
-      {state.toggle && <h1>Visível</h1>}
-      <button
-        onClick={() =>
-          setState((prevState) => ({ ...prevState, toggle: !state.toggle }))
-        }
-      >
-        Toggle
-      </button>
+      {toggle && <h1>Visível</h1>}
+      <button onClick={() => setToggle(!toggle)}>Toggle</button>
     </>
   );
 }
