@@ -19,14 +19,14 @@ class CounterClass extends React.PureComponent {
         title="Class"
         counter={this.state.counter}
         increment={() => {
-          this.setState({
-            counter: this.state.counter + 1,
-          });
+          this.setState((prevState) => ({
+            counter: prevState.counter + 1,
+          }));
         }}
         decrement={() => {
-          this.setState({
-            counter: this.state.counter - 1,
-          });
+          this.setState((prevState) => ({
+            counter: prevState.counter - 1,
+          }));
         }}
       />
     );
@@ -41,8 +41,8 @@ function CounterFunction() {
     <Counter
       title="Function"
       counter={counter}
-      increment={() => setCounter(counter + 1)}
-      decrement={() => setCounter(counter - 1)}
+      increment={() => setCounter((prevState) => prevState + 1)}
+      decrement={() => setCounter((prevState) => prevState - 1)}
     />
   );
 }
