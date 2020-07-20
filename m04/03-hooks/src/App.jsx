@@ -70,21 +70,20 @@ class CounterClass extends React.PureComponent {
   }
 }
 
-// Componente de função
-function CounterFunction() {
+function useCounter() {
   const [counter, setCounter] = useState(0);
-  const [toggle, setToggle] = useState(false);
-
-  useEffect(() => {
-    setInterval(() => {
-      console.log("componentDidMount");
-      setCounter((prevState) => prevState + 1);
-    }, 1000);
-  }, []);
 
   useEffect(() => {
     document.title = `CounterFunction: ${counter}`;
   }, [counter]);
+
+  return [counter, setCounter];
+}
+
+// Componente de função
+function CounterFunction() {
+  const [counter, setCounter] = useCounter();
+  const [toggle, setToggle] = useState(false);
 
   return (
     <>
