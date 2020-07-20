@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Grid, Button } from '@material-ui/core';
 import firebase from '../../services/firebase';
 
@@ -20,12 +20,12 @@ function Login() {
     });
   }, []);
 
-  const login = () => {
+  const login = useCallback(() => {
     const provider = new firebase.auth.GithubAuthProvider();
     firebase.auth().signInWithRedirect(provider);
-  };
+  }, []);
 
-  const logout = async () => {
+  const logout = useCallback(async () => {
     try {
       await firebase.auth().signOut();
 
@@ -34,7 +34,7 @@ function Login() {
     } catch (error) {
       console.error(error.message);
     }
-  };
+  }, []);
 
   return (
     <Container>

@@ -16,14 +16,6 @@ class CounterClass extends React.PureComponent {
 
   componentDidMount() {
     this.updateDocumentTitle();
-
-    // setInterval(() => {
-    //   this.setState((prevState) => {
-    //     return {
-    //       counter: prevState.counter + 1,
-    //     };
-    //   });
-    // }, 1000);
   }
 
   componentDidUpdate(prevProps, prevState) {
