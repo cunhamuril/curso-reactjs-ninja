@@ -1,16 +1,24 @@
 import React from 'react';
-import { CssBaseline } from '@material-ui/core';
+import {
+  CssBaseline,
+  createMuiTheme,
+  MuiThemeProvider,
+} from '@material-ui/core';
 import { Route } from 'react-router-dom';
 
 import Routes from './routes';
 import AuthProvider from './contexts/Auth';
 
+const theme = createMuiTheme();
+
 function App() {
   return (
-    <AuthProvider>
-      <CssBaseline />
-      <Routes />
-    </AuthProvider>
+    <MuiThemeProvider theme={theme}>
+      <AuthProvider>
+        <CssBaseline />
+        <Routes />
+      </AuthProvider>
+    </MuiThemeProvider>
   );
 }
 

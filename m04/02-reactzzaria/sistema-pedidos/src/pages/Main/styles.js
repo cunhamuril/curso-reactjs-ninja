@@ -26,3 +26,7 @@ export const Toolbar = styled(MaterialToolbar)`
 
   margin: 0 auto;
 `;
+
+export const Content = styled.main`
+  padding: 20px;
+`;
