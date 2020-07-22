@@ -6,8 +6,8 @@ import firebase from '../services/firebase';
 import { AuthContext } from '../contexts/Auth';
 
 // Com o lazy Suspense, as páginas vão carregar em arquivos separados,
-// carregado apenas se for necessário. Com isso melhorando a performance
-const MainPage = lazy(() => import('../pages/MainPage'));
+// carregando apenas se for necessário. Com isso melhorando a performance
+const Main = lazy(() => import('../pages/Main'));
 const Login = lazy(() => import('../pages/Login'));
 
 export default function () {
@@ -20,15 +20,11 @@ export default function () {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      console.log('Dados do usuário: ', user);
-
       setIsUserLoggedIn(!!user);
       setUser(user);
 
       setDidCheckUserIn(true);
     });
-
-    window.logout = logout; // TEMP
   }, [setIsUserLoggedIn, setUser, logout]);
 
   if (!didCheckUserIn) {
@@ -46,7 +42,7 @@ export default function () {
   return (
     <Suspense fallback={<LinearProgress />}>
       <Switch>
-        <Route path="/" exact component={MainPage} />
+        <Route path="/" exact component={Main} />
         <Route path="/login" component={Login} />
       </Switch>
     </Suspense>
