@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useContext } from 'react';
+import React, { lazy, Suspense, useEffect, useContext, useState } from 'react';
 import { Route, Switch, useLocation, Redirect } from 'react-router-dom';
 import { LinearProgress } from '@material-ui/core';
 
@@ -11,11 +11,12 @@ const MainPage = lazy(() => import('../pages/MainPage'));
 const Login = lazy(() => import('../pages/Login'));
 
 export default function () {
-  const { setIsUserLoggedIn, setUser, isUserLoggedIn } = useContext(
-    AuthContext
-  );
+  const [didCheckUserIn, setDidCheckUserIn] = useState(false);
 
   const location = useLocation();
+  const { setIsUserLoggedIn, setUser, isUserLoggedIn, logout } = useContext(
+    AuthContext
+  );
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -23,8 +24,16 @@ export default function () {
 
       setIsUserLoggedIn(!!user);
       setUser(user);
+
+      setDidCheckUserIn(true);
     });
-  }, [setIsUserLoggedIn, setUser]);
+
+    window.logout = logout; // TEMP
+  }, [setIsUserLoggedIn, setUser, logout]);
+
+  if (!didCheckUserIn) {
+    return <LinearProgress />;
+  }
 
   if (isUserLoggedIn) {
     if (location.pathname === '/login') {
