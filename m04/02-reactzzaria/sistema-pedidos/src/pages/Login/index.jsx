@@ -1,12 +1,17 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useContext, useState, useCallback } from 'react';
 import { Grid, Button } from '@material-ui/core';
 import firebase from '../../services/firebase';
 
 import { Container, Logo, GitHubButton } from './styles';
 
+import { ColorContext } from '../../App';
+
 function Login() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+
+  // Com o useContext não precisa utilizar o Consumer
+  const { color, setColor } = useContext(ColorContext);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -52,7 +57,16 @@ function Login() {
               </Button>
             </>
           ) : (
-            <GitHubButton onClick={login}>Entrar com GitHub</GitHubButton>
+            // <ColorContext.Consumer>
+            //   {({ color, setColor }) => (
+            <>
+              <GitHubButton onClick={login}>
+                Entrar com GitHub ({color})
+              </GitHubButton>
+              <button onClick={() => setColor('blue')}>Cor azul</button>
+            </>
+            //   )}
+            // </ColorContext.Consumer>
           )}
         </Grid>
       </Grid>
