@@ -1,27 +1,17 @@
-import React, { createContext, useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import React from 'react';
 import { CssBaseline } from '@material-ui/core';
+import { Route } from 'react-router-dom';
 
 import Routes from './routes';
-
-export const ColorContext = createContext();
+import AuthProvider from './contexts/Auth';
 
 function App() {
-  const [color, setColor] = useState('black');
-
   return (
-    <ColorContext.Provider
-      value={{
-        color,
-        setColor,
-      }}
-    >
+    <AuthProvider>
       <CssBaseline />
-      <BrowserRouter>
-        <Routes />
-      </BrowserRouter>
-    </ColorContext.Provider>
+      <Routes />
+    </AuthProvider>
   );
 }
 
-export default App;
+export default () => <Route component={App} />;
