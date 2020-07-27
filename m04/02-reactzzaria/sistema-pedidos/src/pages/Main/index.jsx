@@ -13,16 +13,49 @@ import {
 
 import { AuthContext } from '../../contexts/Auth';
 
-import { LogoContainer, Logo, Toolbar, Content } from './styles';
+import {
+  LogoContainer,
+  Logo,
+  Toolbar,
+  Content,
+  Divider,
+  PaperPizza,
+  Pizza,
+  PizzaText,
+  PizzasGrid,
+  Title,
+} from './styles';
+
+const pizzaSizes = [
+  {
+    id: 0,
+    name: 'Pequena',
+    size: 28,
+    slices: 2,
+    flavours: 1,
+  },
+  {
+    id: 1,
+    name: 'Média',
+    size: 30,
+    slices: 6,
+    flavours: 2,
+  },
+  {
+    id: 2,
+    name: 'Grande',
+    size: 32,
+    slices: 8,
+    flavours: 3,
+  },
+];
 
 /**
  * withStyles from Material UI
  */
-const style = (theme) => {
-  return {
-    main: theme.mixins.toolbar,
-  };
-};
+const style = (theme) => ({
+  main: theme.mixins.toolbar,
+});
 
 const Spacer = withStyles(style)(({ classes }) => (
   <div className={classes.main} />
@@ -70,13 +103,34 @@ function Main() {
       <Spacer />
 
       <Content>
-        <Grid container justify="center">
-          <Grid item>
-            <Typography variant="h3">
-              O que vai ser hoje, {userName}?
-            </Typography>
-          </Grid>
+        <Grid container direction="column" align="center">
+          <Title variant="h3" gutterBottom>
+            O que vai ser hoje, {userName}?
+          </Title>
+
+          <Title variant="h4" gutterBottom>
+            Escolha o tamanho da pizza:
+          </Title>
         </Grid>
+
+        <PizzasGrid>
+          {pizzaSizes.map((pizza) => (
+            <Grid item key={pizza.id} xs>
+              <PaperPizza>
+                <Pizza>
+                  <PizzaText>{pizza.size}cm</PizzaText>
+                </Pizza>
+
+                <Divider />
+
+                <Typography variant="h5">{pizza.name}</Typography>
+                <Typography>
+                  {pizza.slices} fatias, {pizza.flavours} sabores
+                </Typography>
+              </PaperPizza>
+            </Grid>
+          ))}
+        </PizzasGrid>
       </Content>
     </>
   );
