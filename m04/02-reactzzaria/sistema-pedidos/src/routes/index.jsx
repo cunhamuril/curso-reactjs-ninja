@@ -21,7 +21,7 @@ export default function () {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setIsUserLoggedIn(!!user);
-      setUser(user);
+      setUser({ ...user, firstName: user?.displayName?.split(' ')[0] });
 
       setDidCheckUserIn(true);
     });

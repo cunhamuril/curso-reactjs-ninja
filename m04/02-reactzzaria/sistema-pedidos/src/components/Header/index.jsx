@@ -17,8 +17,6 @@ const Header = () => {
 
   const { logout, user } = useContext(AuthContext);
 
-  const userName = user.displayName.split(' ')[0];
-
   const handleOpenMenu = (e) => {
     setAnchorElement(e.target);
   };
@@ -34,7 +32,7 @@ const Header = () => {
           <Logo />
         </LogoContainer>
 
-        <Typography>Olá, {userName}</Typography>
+        <Typography>Olá, {user.firstName}</Typography>
 
         <IconButton color="inherit" onClick={handleOpenMenu}>
           <AccountCircle />

@@ -58,8 +58,6 @@ const Spacer = withStyles(style)(({ classes }) => (
 function Main() {
   const { user } = useContext(AuthContext);
 
-  const userName = user.displayName.split(' ')[0];
-
   return (
     <>
       <Header />
@@ -69,7 +67,7 @@ function Main() {
       <Content>
         <Grid container direction="column" align="center">
           <Title variant="h3" gutterBottom>
-            O que vai ser hoje, {userName}?
+            O que vai ser hoje, {user.firstName}?
           </Title>
 
           <Title variant="h4" gutterBottom>
