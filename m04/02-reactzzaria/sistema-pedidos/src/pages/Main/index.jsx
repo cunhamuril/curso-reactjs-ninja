@@ -1,22 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { AccountCircle } from '@material-ui/icons';
-import {
-  AppBar,
-  IconButton,
-  Typography,
-  Menu,
-  MenuItem,
-  Grid,
-  withStyles,
-} from '@material-ui/core';
+import { Typography, Grid, withStyles } from '@material-ui/core';
 
 import { AuthContext } from '../../contexts/Auth';
 
+import Header from '../../components/Header';
+
 import {
-  LogoContainer,
-  Logo,
-  Toolbar,
   Content,
   Divider,
   PaperPizza,
@@ -66,43 +56,13 @@ const Spacer = withStyles(style)(({ classes }) => (
 ));
 
 function Main() {
-  const [anchorElement, setAnchorElement] = useState(null);
-
-  const { logout, user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const userName = user.displayName.split(' ')[0];
 
-  const handleOpenMenu = (e) => {
-    setAnchorElement(e.target);
-  };
-
-  const handleClose = () => {
-    setAnchorElement(null);
-  };
-
   return (
     <>
-      <AppBar>
-        <Toolbar>
-          <LogoContainer>
-            <Logo />
-          </LogoContainer>
-
-          <Typography>Olá, {userName}</Typography>
-
-          <IconButton color="inherit" onClick={handleOpenMenu}>
-            <AccountCircle />
-          </IconButton>
-
-          <Menu
-            open={!!anchorElement}
-            onClose={handleClose}
-            anchorEl={anchorElement}
-          >
-            <MenuItem onClick={logout}>Sair</MenuItem>
-          </Menu>
-        </Toolbar>
-      </AppBar>
+      <Header />
 
       <Spacer />
 
