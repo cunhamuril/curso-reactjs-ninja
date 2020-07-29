@@ -1,48 +1,13 @@
-import React, { useContext } from 'react';
+import React, { lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
-import { Typography, Grid, withStyles } from '@material-ui/core';
+import { withStyles, LinearProgress } from '@material-ui/core';
+import { Switch, Route } from 'react-router-dom';
 
-import { AuthContext } from '../../contexts/Auth';
+import { Header } from '../../components';
 
-import Header from '../../components/Header';
+import { Content } from './styles';
 
-import {
-  Content,
-  Divider,
-  PaperPizza,
-  Pizza,
-  PizzaText,
-  PizzasGrid,
-  Title,
-} from './styles';
-
-function singularOrPlural(amount, singular, plural) {
-  return amount === 1 ? singular : plural;
-}
-
-const pizzaSizes = [
-  {
-    id: 0,
-    name: 'Pequena',
-    size: 28,
-    slices: 2,
-    flavours: 1,
-  },
-  {
-    id: 1,
-    name: 'Média',
-    size: 30,
-    slices: 6,
-    flavours: 2,
-  },
-  {
-    id: 2,
-    name: 'Grande',
-    size: 32,
-    slices: 8,
-    flavours: 3,
-  },
-];
+const ChoosePizzaSize = lazy(() => import('../ChoosePizzaSize'));
 
 /**
  * withStyles from Material UI
@@ -56,8 +21,6 @@ const Spacer = withStyles(style)(({ classes }) => (
 ));
 
 function Main() {
-  const { user } = useContext(AuthContext);
-
   return (
     <>
       <Header />
@@ -65,35 +28,11 @@ function Main() {
       <Spacer />
 
       <Content>
-        <Grid container direction="column" align="center">
-          <Title variant="h3" gutterBottom>
-            O que vai ser hoje, {user.firstName}?
-          </Title>
-
-          <Title variant="h4" gutterBottom>
-            Escolha o tamanho da pizza:
-          </Title>
-        </Grid>
-
-        <PizzasGrid>
-          {pizzaSizes.map((pizza) => (
-            <Grid item key={pizza.id} xs>
-              <PaperPizza>
-                <Pizza>
-                  <PizzaText>{pizza.size}cm</PizzaText>
-                </Pizza>
-
-                <Divider />
-
-                <Typography variant="h5">{pizza.name}</Typography>
-                <Typography>
-                  {pizza.slices} fatias, {pizza.flavours}{' '}
-                  {singularOrPlural(pizza.flavours, 'sabor', 'sabores')}
-                </Typography>
-              </PaperPizza>
-            </Grid>
-          ))}
-        </PizzasGrid>
+        <Suspense fallback={<LinearProgress />}>
+          <Switch>
+            <Route path="/" exact component={ChoosePizzaSize} />
+          </Switch>
+        </Suspense>
       </Content>
     </>
   );
