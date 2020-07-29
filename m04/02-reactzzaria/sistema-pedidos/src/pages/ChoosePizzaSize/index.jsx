@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Typography, Grid } from '@material-ui/core';
+import { Typography, Grid, Card } from '@material-ui/core';
 
 import { AuthContext } from '../../contexts/Auth';
 
@@ -7,11 +7,11 @@ import pizzaSizes from '../../mock/pizzaSizes';
 
 import {
   Divider,
-  PaperPizza,
   Pizza,
   PizzaText,
   PizzasGrid,
   Title,
+  CardActionArea,
 } from './styles';
 
 function singularOrPlural(amount, singular, plural) {
@@ -36,19 +36,26 @@ function ChoosePizzaSize() {
       <PizzasGrid>
         {pizzaSizes.map((pizza) => (
           <Grid item key={pizza.id} xs>
-            <PaperPizza>
-              <Pizza>
-                <PizzaText>{pizza.size}cm</PizzaText>
-              </Pizza>
+            <Card>
+              <CardActionArea
+                to={{
+                  pathname: '/sabores-da-pizza',
+                  state: pizza,
+                }}
+              >
+                <Pizza>
+                  <PizzaText>{pizza.size}cm</PizzaText>
+                </Pizza>
 
-              <Divider />
+                <Divider />
 
-              <Typography variant="h5">{pizza.name}</Typography>
-              <Typography>
-                {pizza.slices} fatias, {pizza.flavours}{' '}
-                {singularOrPlural(pizza.flavours, 'sabor', 'sabores')}
-              </Typography>
-            </PaperPizza>
+                <Typography variant="h5">{pizza.name}</Typography>
+                <Typography>
+                  {pizza.slices} fatias, {pizza.flavours + ' '}
+                  {singularOrPlural(pizza.flavours, 'sabor', 'sabores')}
+                </Typography>
+              </CardActionArea>
+            </Card>
           </Grid>
         ))}
       </PizzasGrid>

@@ -1,13 +1,11 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles, LinearProgress } from '@material-ui/core';
-import { Switch, Route } from 'react-router-dom';
+import { withStyles } from '@material-ui/core';
 
 import { Header } from '../../components';
+import { InternalPages } from '../../routes';
 
 import { Content } from './styles';
-
-const ChoosePizzaSize = lazy(() => import('../ChoosePizzaSize'));
 
 /**
  * withStyles from Material UI
@@ -28,11 +26,7 @@ function Main() {
       <Spacer />
 
       <Content>
-        <Suspense fallback={<LinearProgress />}>
-          <Switch>
-            <Route path="/" exact component={ChoosePizzaSize} />
-          </Switch>
-        </Suspense>
+        <InternalPages />
       </Content>
     </>
   );

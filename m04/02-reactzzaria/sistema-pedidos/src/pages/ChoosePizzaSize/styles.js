@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import {
   Divider as MaterialDivider,
-  Paper,
+  CardActionArea as MaterialCardActionArea,
   Grid,
   Typography,
 } from '@material-ui/core';
@@ -12,10 +13,14 @@ export const Divider = styled(MaterialDivider)`
   width: 100%;
 `;
 
-export const PaperPizza = styled(Paper)`
+export const CardActionArea = styled(MaterialCardActionArea).attrs({
+  component: Link,
+})`
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  min-width: 250px;
 
   padding: 20px 0;
 `;
@@ -23,6 +28,7 @@ export const PaperPizza = styled(Paper)`
 export const Pizza = styled.div`
   position: relative;
 
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,6 +38,7 @@ export const Pizza = styled.div`
   border-radius: 50%;
 
   border: 1px solid #ccc;
+  background-color: #fff;
 
   &::before,
   &::after {

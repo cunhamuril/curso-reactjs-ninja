@@ -10,11 +10,23 @@ import { AuthContext } from '../contexts/Auth';
 const Main = lazy(() => import('../pages/Main'));
 const Login = lazy(() => import('../pages/Login'));
 
+const ChoosePizzaSize = lazy(() => import('../pages/ChoosePizzaSize'));
+const ChoosePizzaFlavours = lazy(() => import('../pages/ChoosePizzaFlavours'));
+
+export const InternalPages = () => (
+  <Suspense fallback={<LinearProgress />}>
+    <Switch>
+      <Route path="/" exact component={ChoosePizzaSize} />
+      <Route path="/sabores-da-pizza" exact component={ChoosePizzaFlavours} />
+    </Switch>
+  </Suspense>
+);
+
 export default function () {
   const [didCheckUserIn, setDidCheckUserIn] = useState(false);
 
   const location = useLocation();
-  const { setIsUserLoggedIn, setUser, isUserLoggedIn, logout } = useContext(
+  const { setIsUserLoggedIn, setUser, isUserLoggedIn } = useContext(
     AuthContext
   );
 
@@ -25,7 +37,7 @@ export default function () {
 
       setDidCheckUserIn(true);
     });
-  }, [setIsUserLoggedIn, setUser, logout]);
+  }, [setIsUserLoggedIn, setUser]);
 
   if (!didCheckUserIn) {
     return <LinearProgress />;
@@ -42,8 +54,8 @@ export default function () {
   return (
     <Suspense fallback={<LinearProgress />}>
       <Switch>
-        <Route path="/" exact component={Main} />
-        <Route path="/login" component={Login} />
+        <Route path="/" component={Main} />
+        <Route path="/login" exact component={Login} />
       </Switch>
     </Suspense>
   );
