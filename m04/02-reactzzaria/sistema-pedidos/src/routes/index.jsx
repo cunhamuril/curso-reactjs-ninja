@@ -13,15 +13,34 @@ const Login = lazy(() => import('../pages/Login'));
 const ChoosePizzaSize = lazy(() => import('../pages/ChoosePizzaSize'));
 const ChoosePizzaFlavours = lazy(() => import('../pages/ChoosePizzaFlavours'));
 
+/**
+ * PATHS
+ */
+export const paths = {
+  home: '/',
+  login: '/login',
+  choosePizzaFlavours: '/sabores-da-pizza',
+};
+
+/**
+ * INTERNAL PAGES
+ */
 export const InternalPages = () => (
   <Suspense fallback={<LinearProgress />}>
     <Switch>
-      <Route path="/" exact component={ChoosePizzaSize} />
-      <Route path="/sabores-da-pizza" exact component={ChoosePizzaFlavours} />
+      <Route path={paths.home} exact component={ChoosePizzaSize} />
+      <Route
+        path={paths.choosePizzaFlavours}
+        exact
+        component={ChoosePizzaFlavours}
+      />
     </Switch>
   </Suspense>
 );
 
+/**
+ * MAIN ROUTES
+ */
 export default function () {
   const [didCheckUserIn, setDidCheckUserIn] = useState(false);
 
@@ -44,18 +63,18 @@ export default function () {
   }
 
   if (isUserLoggedIn && location.pathname === '/login') {
-    return <Redirect to="/" />;
+    return <Redirect to={paths.home} />;
   }
 
   if (!isUserLoggedIn && location.pathname !== '/login') {
-    return <Redirect to="/login" />;
+    return <Redirect to={paths.login} />;
   }
 
   return (
     <Suspense fallback={<LinearProgress />}>
       <Switch>
-        <Route path="/" component={Main} />
-        <Route path="/login" exact component={Login} />
+        <Route path={paths.home} component={Main} />
+        <Route path={paths.login} exact component={Login} />
       </Switch>
     </Suspense>
   );

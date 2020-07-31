@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Typography, Grid, Card } from '@material-ui/core';
 
 import { AuthContext } from '../../contexts/Auth';
+import { paths } from '../../routes';
 
 import pizzaSizes from '../../mock/pizzaSizes';
 
@@ -39,7 +40,7 @@ function ChoosePizzaSize() {
             <Card>
               <CardActionArea
                 to={{
-                  pathname: '/sabores-da-pizza',
+                  pathname: paths.choosePizzaFlavours,
                   state: pizza,
                 }}
               >
