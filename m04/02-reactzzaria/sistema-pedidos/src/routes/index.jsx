@@ -5,6 +5,8 @@ import { LinearProgress } from '@material-ui/core';
 import firebase from '../services/firebase';
 import { AuthContext } from '../contexts/Auth';
 
+import paths from './paths';
+
 // Com o lazy Suspense, as páginas vão carregar em arquivos separados,
 // carregando apenas se for necessário. Com isso melhorando a performance
 const Main = lazy(() => import('../pages/Main'));
@@ -16,11 +18,7 @@ const ChoosePizzaFlavours = lazy(() => import('../pages/ChoosePizzaFlavours'));
 /**
  * PATHS
  */
-export const paths = {
-  home: '/',
-  login: '/login',
-  choosePizzaFlavours: '/sabores-da-pizza',
-};
+export { paths };
 
 /**
  * INTERNAL PAGES

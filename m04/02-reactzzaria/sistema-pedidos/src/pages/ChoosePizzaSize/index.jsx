@@ -3,36 +3,30 @@ import { Typography, Grid, Card } from '@material-ui/core';
 
 import { AuthContext } from '../../contexts/Auth';
 import { paths } from '../../routes';
+import { singularOrPlural } from '../../utils';
 
 import pizzaSizes from '../../mock/pizzaSizes';
+
+import { Title, HeaderContent } from '../../components';
 
 import {
   Divider,
   Pizza,
   PizzaText,
   PizzasGrid,
-  Title,
   CardActionArea,
 } from './styles';
-
-function singularOrPlural(amount, singular, plural) {
-  return amount === 1 ? singular : plural;
-}
 
 function ChoosePizzaSize() {
   const { user } = useContext(AuthContext);
 
   return (
     <>
-      <Grid container direction="column" align="center">
-        <Title variant="h3" gutterBottom>
-          O que vai ser hoje, {user.firstName}?
-        </Title>
+      <HeaderContent>
+        <Title variant="h3">O que vai ser hoje, {user.firstName}?</Title>
 
-        <Title variant="h4" gutterBottom>
-          Escolha o tamanho da pizza:
-        </Title>
-      </Grid>
+        <Title variant="h4">Escolha o tamanho da pizza:</Title>
+      </HeaderContent>
 
       <PizzasGrid>
         {pizzaSizes.map((pizza) => (

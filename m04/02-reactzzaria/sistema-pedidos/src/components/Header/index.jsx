@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { AccountCircle } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
 import {
   AppBar,
   IconButton,
@@ -9,6 +10,7 @@ import {
 } from '@material-ui/core';
 
 import { AuthContext } from '../../contexts/Auth';
+import { paths } from '../../routes';
 
 import { LogoContainer, Logo, Toolbar } from './styles';
 
@@ -29,7 +31,9 @@ const Header = () => {
     <AppBar>
       <Toolbar>
         <LogoContainer>
-          <Logo />
+          <Link to={paths.home}>
+            <Logo />
+          </Link>
         </LogoContainer>
 
         <Typography>Olá, {user.firstName}</Typography>
